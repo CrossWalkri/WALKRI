@@ -1,7 +1,7 @@
 ---
 title: WALKRI Canonical Form Field Profile for CROSS Round Configuration
-version: 0.1.0
-date: 2026-05-22
+version: 0.1.1
+date: 2026-06-09
 license: CC0
 status: Working draft. Companion to WALKRI-interface-specification-0_1_0.md.
 related_documents:
@@ -12,7 +12,7 @@ related_documents:
 
 # WALKRI Canonical Form Field Profile for CROSS Round Configuration
 
-Version 0.1.0 | 2026-05-22 | CC0
+Version 0.1.1 | 2026-06-09 | CC0
 
 ---
 
@@ -22,7 +22,7 @@ This document is the WALKRI companion to the CROSS Canonical Round Configuration
 
 WALKRI-interface-specification-0_1_0.md defines the generic x-walkri- JSON Schema profile. This document applies that profile to the CROSS canonical round configuration context. This document does not supersede or modify the interface specification; it extends it with CROSS-specific notes.
 
-The governing authority boundary between CROSS and WALKRI at the field level is specified in WALKRI-CROSS-boundary-0_1_0.md. CROSS governs the obligation architecture at the round level (obligation_mode, change_specification, components, gate_type). WALKRI governs the criterion specification quality at the field level (the x-walkri- properties on each field within sections).
+The authority boundary between CROSS and WALKRI at the field level is specified in WALKRI-CROSS-boundary-0_1_0.md. CROSS covers the obligation architecture at the round level (obligation_mode, change_specification, components, gate_type). WALKRI covers the criterion specification quality at the field level (the x-walkri- properties on each field within sections).
 
 ---
 
@@ -38,7 +38,7 @@ Every field in a CROSS canonical round configuration carries the following x-wal
 | `x-walkri-operational-definition` | object | always | Operational Definition (WALKRI Part III, 3.2) |
 | `x-walkri-response-form-justification` | string | always | Response Form (WALKRI Part III, 3.3) |
 | `x-walkri-evidence-form` | string | always | Evidence Form (WALKRI Part III, 3.4) |
-| `x-walkri-compliance-threshold` | object | always | Compliance Threshold (WALKRI Part III, 3.5) |
+| `x-walkri-conformance-threshold` | object | always | Conformance Threshold (WALKRI Part III, 3.5) |
 | `x-walkri-verdict` | enum | always | Audit outcome: `instrument` or `label` |
 | `x-walkri-specification-version` | string (semver) | always | Field specification versioning |
 | `x-walkri-specification-date` | string (ISO 8601 date) | always | Field specification timestamp |
@@ -62,25 +62,25 @@ Every field in a CROSS canonical round configuration carries the following x-wal
 
 ---
 
-## Part IV: The Compliance Threshold Object
+## Part IV: The Conformance Threshold Object
 
-`x-walkri-compliance-threshold` is required for all fields, including fields that reference no external standard. When no external standard is referenced, the field must carry:
+`x-walkri-conformance-threshold` is required for all fields, including fields that reference no external standard. When no external standard is referenced, the field must carry:
 
 ```json
 {
-  "x-walkri-compliance-threshold": {
+  "x-walkri-conformance-threshold": {
     "minimum-threshold": "none"
   }
 }
 ```
 
-The `"none"` value is a positive assertion that the field designer has considered whether an external standard reference applies and determined that none does. A missing `x-walkri-compliance-threshold` property is an incomplete specification.
+The `"none"` value is a positive assertion that the field designer has considered whether an external standard reference applies and determined that none does. A missing `x-walkri-conformance-threshold` property is an incomplete specification.
 
 When an external standard is referenced:
 
 ```json
 {
-  "x-walkri-compliance-threshold": {
+  "x-walkri-conformance-threshold": {
     "standard-url": "https://example.org/standard",
     "version-anchor": "v2.1, 2024-03-15",
     "required-components": ["indicator-1", "indicator-3"],
@@ -103,7 +103,7 @@ When an external standard is referenced:
 
 **instrument**: The field satisfies all five WALKRI criterion specification requirements at conformant quality. It may be published to applicants.
 
-**label**: The field fails one or more requirements. It may not be published in a CROSS+WALKRI conformant round without a documented override and revision timeline. CROSS's field clarity gate (CROSS-grant-configurator-0_2_0.md Part IV) enforces this before round publication.
+**label**: The field fails one or more requirements. It may not be published in a CROSS+WALKRI conformant round without a documented override and revision timeline. CROSS's field clarity gate (CROSS-grant-configurator-0_2_0.md Part IV) applies this before round publication.
 
 A field may carry a `label` verdict during the design phase. The verdict must be resolved before the round configuration is published as the authoritative Commit stage output. A published round configuration with any `x-walkri-verdict: "label"` field lacking a documented override is a CROSS+WALKRI conformance failure.
 
@@ -111,7 +111,7 @@ A field may carry a `label` verdict during the design phase. The verdict must be
 
 ## Part VI: Scope of the x-walkri- Profile in CROSS Fields
 
-The x-walkri- properties govern only the fields within the `sections` array (and within component `sections` for compound rounds). They do not apply to round-level CROSS obligation architecture fields (obligation_mode, change_specification, components, gate_type, evidence_standard). Those fields are governed by CROSS. The governing authority for each part of the schema is specified in WALKRI-CROSS-boundary-0_1_0.md.
+The x-walkri- properties cover only the fields within the `sections` array (and within component `sections` for compound rounds). They do not apply to round-level CROSS obligation architecture fields (obligation_mode, change_specification, components, gate_type, evidence_standard). Those fields are covered by CROSS. The applicable authority for each part of the schema is specified in WALKRI-CROSS-boundary-0_1_0.md.
 
 The `id`, `label`, `description`, and `conditional_on` properties on a field are CROSS administrative fields. Their presence does not affect WALKRI conformance assessment.
 
@@ -135,4 +135,5 @@ Implementers building translators from the canonical CROSS format to specific fo
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.1.1 | 2026-06-09 | Conformance-threshold rename and Frame Language own-voice pass. The field property `x-walkri-compliance-threshold` is renamed `x-walkri-conformance-threshold` and the display name is now "Conformance Threshold" (a breaking annotation-key rename, aligning with the JSON schemas at @0.2.1 and the interface specification). Own-voice watchlist terms recast (govern to cover/apply, enforce to apply). No requirement changed; naming and vocabulary only. |
 | 0.1.0 | 2026-05-22 | Initial specification. |
