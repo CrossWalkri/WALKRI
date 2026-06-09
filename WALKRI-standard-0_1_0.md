@@ -509,7 +509,7 @@ For a field to pass certification, it must satisfy all five criterion specificat
 
 ## Part IX: Implementation Architecture
 
-WALKRI is implemented through three product-layer tools. These tools are described in implementation documents; this Part names them and states their relationship to the standard. Any tool that assesses field specifications against Parts III through VII of this standard and produces a conformance record satisfies the WALKRI audit function. The Grants Field Calibrator is the reference implementation, not the required implementation.
+WALKRI is implemented through three product-layer tools. These tools are described in implementation documents; this Part names them and states their relationship to the standard. Any tool that assesses field specifications against Parts III through VII of this standard and produces a conformance record satisfies the WALKRI audit function. A reference implementation is available, but it is not the required implementation.
 
 ### 9.1 WALKRI Ideation Tool
 
