@@ -1,7 +1,7 @@
 ---
 title: WALKRI Worked Examples
-version: 0.1.2
-date: 2026-05-18
+version: 0.1.3
+date: 2026-06-08
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 source: Octant Epoch 12 grant evaluation cycle, 2026.
@@ -9,13 +9,13 @@ source: Octant Epoch 12 grant evaluation cycle, 2026.
 
 # WALKRI Worked Examples
 
-Version 0.1.2 | 2026-05-18 | CC0
+Version 0.1.3 | 2026-06-08 | CC0
 
 ---
 
 ## Introduction
 
-These examples demonstrate what WALKRI failures look like in practice and what conformant specifications would have looked like in their place. They are drawn from the Octant Epoch 12 grant evaluation cycle. Octant is a web3 public goods funding program; in Epoch 12, 52 grant applications were submitted using a form built in Fillout. Several fields in that form produced inconsistent applicant responses that complicated evaluation because those fields lacked precise operational definitions, compliance thresholds, or evidence forms. The cases documented here are real specification failures from that cycle, reconstructed in WALKRI's five-element format to show what the fields should have contained before any application was accepted.
+These examples demonstrate what WALKRI failures look like in practice and what conformant specifications would have looked like in their place. They are drawn from the Octant Epoch 12 grant evaluation cycle. Octant is a web3 public goods funding program; in Epoch 12, 52 grant applications were submitted using a form built in Fillout. Several fields in that form produced inconsistent applicant responses that complicated evaluation because those fields lacked precise operational definitions, conformance thresholds, or evidence forms. The cases documented here are real specification failures from that cycle, reconstructed in WALKRI's five-element format to show what the fields should have contained before any application was accepted.
 
 Each example follows the same structure: the field as published, a description of what happened in evaluation, and a WALKRI-conformant specification showing all five elements. The final example is a positive case, showing a field that would pass WALKRI audit without modification. The last two sections draw quantitative observations from the Epoch 12 experience and close with a summary for practitioners who run grant evaluations.
 
@@ -31,7 +31,7 @@ The before/after blocks use structured comparison formatting throughout. Prose s
 Label:              "Building on Ethereum or qualifying as DPG per DPGAlliance"
 Response form:      Not specified (applicants answered in free text)
 Evidence form:      Not specified
-Compliance threshold: Not specified
+Conformance threshold: Not specified
 ```
 
 ### What happened
@@ -43,7 +43,7 @@ Evaluators could not consistently assess DPG eligibility because the field did n
 **Criterion Intent:** Whether the project satisfies the Digital Public Goods Standard as an alternative to the Ethereum pathway, assessed against the nine DPG Standard indicators, for purposes of determining pathway eligibility at time of application.
 
 **Operational Definition:**
-- Inclusion: a project qualifies if it satisfies the required DPG Standard indicators as specified in the compliance threshold below.
+- Inclusion: a project qualifies if it satisfies the required DPG Standard indicators as specified in the conformance threshold below.
 - Exclusion: registry membership alone does not qualify a project; the current state of the project must satisfy the indicators at the time of evaluation.
 - Unit of analysis: the applying project, not the organization.
 - Edge case: a project in the DPG registry that has changed substantially since registry assessment is evaluated against current indicators, not registry status. Substantial change is defined as a change in license, a change in core functionality, or a change in technical dependencies that affects platform independence.
@@ -54,7 +54,7 @@ Evaluators could not consistently assess DPG eligibility because the field did n
 
 **Evidence Form:** For the DPG pathway, a completed DPG self-assessment form or a link to the project's evidence for each required indicator. Evidence must be accessible from public sources without authentication.
 
-**Compliance threshold** (DPG Standard, https://digitalpublicgoods.net/standard/, accessed 2026-05-15):
+**Conformance threshold** (DPG Standard, https://digitalpublicgoods.net/standard/, accessed 2026-05-15):
 
 Required indicators (all four must pass):
 - Indicator 1, SDG relevance: named SDG with explanation of relevance.
@@ -74,7 +74,7 @@ Minimum threshold: all four required indicators must pass. Failure on any requir
 | Operational definition | Absent | Pass |
 | Response form | Not specified | Pass |
 | Evidence form | Absent | Pass |
-| Compliance threshold | Absent | Pass |
+| Conformance threshold | Absent | Pass |
 
 **Original Field:** Not certifiable. Five unresolved flags.
 **Conformant Specification:** Certified at Standard level.
@@ -130,7 +130,7 @@ A second failure compounded the first: none of the five options carried a defini
 | Operational definition | Absent (options undefined) | Pass |
 | Response form | Single-select on multi-value construct (design error) | Pass |
 | Evidence form | Absent | Pass |
-| Compliance threshold | N/A (no external standard) | N/A |
+| Conformance threshold | N/A (no external standard) | N/A |
 
 **Original Field:** Not certifiable. Four flags, including a response form design error.
 **Conformant Specification:** Certified at Standard level.
@@ -163,7 +163,7 @@ This example shows a field that passes WALKRI audit without modification. It is 
 
 **Evidence Form:** For each grant listed, a publicly accessible announcement URL or award letter. Self-reported totals without supporting URLs are not accepted. If no public announcement exists, a redacted award letter or a letter of attestation from the funder is acceptable.
 
-**Compliance Threshold:** Not applicable. This field does not reference an external standard. The operational definition above is the compliance specification.
+**Conformance Threshold:** Not applicable. This field does not reference an external standard. The operational definition above is the compliance specification.
 
 **Timeliness Note:** Evidence must reflect the 24-month window ending on the application deadline. Evidence from outside this window should not be submitted and will not be considered.
 
@@ -175,7 +175,7 @@ This example shows a field that passes WALKRI audit without modification. It is 
 | Operational definition | Pass: inclusion, exclusion, unit, counting rule, boundary condition, and one edge case all present |
 | Response form | Pass: response type is appropriate for the construct; justification addresses why numeric plus structured list is correct |
 | Evidence form | Pass: artifact type, required content, and acceptable alternatives are specified; recency requirement is stated |
-| Compliance threshold | Pass: no external standard referenced; operational definition is self-sufficient |
+| Conformance threshold | Pass: no external standard referenced; operational definition is self-sufficient |
 
 **Field certified at Standard level without modification.**
 
@@ -323,9 +323,9 @@ Additionality boundary: Not applicable (grant-only).
 Authority state: Individual
 Full legal name: [Named developer, jurisdiction stated]
 
-**Assessment:** Conformant. Individual disbursement authority for a sole contributor is consistent with the governance resilience declaration.
+**Assessment:** Conformant. Individual disbursement authority for a sole contributor is consistent with the Continuity Capacity declaration.
 
-**Governance resilience instrument:**
+**Continuity Capacity instrument:**
 Resilience state: Single
 Named primary contributor: [Named developer]
 Continuity explanation: The project is sole-authored. If unavailable, development would pause until a new contributor is onboarded. No succession mechanism exists at this stage.
@@ -371,6 +371,7 @@ Explanation: The third milestone was reduced in scope at the continuation gate d
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.3 | 2026-06-08 | Primitive rename cascade propagated: the Governance Resilience instrument is now the Continuity Capacity instrument in Example 6, completing the Foundation v0.1.7 rename in this companion. No example content or outcome changed; naming only. |
 | 0.1.2 | 2026-05-18 | Example 6 added: Gate Declaration Fields (Section 3.8). Three patterns: grant-only with single governance (clean), undisclosed commercial revenue (non-conformant with corrected version), returning applicant with partially fulfilled prior obligation (conformant disclosure). |
 | 0.1.1 | 2026-05-17 | Example 5 added: The Organizational Identity Declaration. Before/after from the Epoch 12 evaluation cycle. Three patterns from evaluation (unverifiable attribution, self-reference inconsistency, prior employer work as independent) with WALKRI-conformant specifications for all three identity instruments and a WALKRI audit result table. |
 | 0.1.0 | 2026-05-15 | Initial draft. Four examples from the Epoch 12 evaluation cycle: DPG eligibility field (Example 1), Contributions single-select field (Example 2), well-specified prior grant funding field as positive case (Example 3), and upstream value analysis (Example 4). |

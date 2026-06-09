@@ -1,14 +1,14 @@
 ---
 title: WALKRI Assessment Rubric
-version: 0.1.2
-date: 2026-05-18
+version: 0.1.4
+date: 2026-06-08
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Assessment Rubric
 
-Version 0.1.2 | 2026-05-18 | CC0
+Version 0.1.4 | 2026-06-08 | CC0
 
 ---
 
@@ -30,7 +30,7 @@ In both contexts, the auditor works field by field. Each field receives an indep
 
 Part 2 covers the five criterion specification requirements from Part III of the standard. These requirements apply at the field design stage and are assessed against the field specification document, not against applicant responses. The auditor is asking: is this field specification complete enough to support consistent interpretation by applicants and reviewers?
 
-The requirements must be assessed in the order presented. Criterion intent is assessed first because its absence makes all subsequent assessments meaningless: without a criterion intent, there is no basis for evaluating whether the operational definition, response form, evidence form, or compliance threshold are appropriate.
+The requirements must be assessed in the order presented. Criterion intent is assessed first because its absence makes all subsequent assessments meaningless: without a criterion intent, there is no basis for evaluating whether the operational definition, response form, evidence form, or conformance threshold are appropriate.
 
 ### 2.1 Criterion Intent
 
@@ -98,7 +98,7 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 
 ---
 
-### 2.5 Compliance Threshold (for fields referencing external standards)
+### 2.5 Conformance Threshold (for fields referencing external standards)
 
 **Assessment Question:** For each external standard referenced, does the field specification enumerate which components are required, what evidence satisfies each, and the minimum threshold for passage?
 
@@ -107,7 +107,7 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 | Pass | All three elements are present for each external standard referenced: component enumeration, evidence specification per component, and minimum threshold for passage. The threshold is stated explicitly enough that two reviewers who had never discussed it would apply it consistently. |
 | Fail | An external standard is named without component enumeration, or components are enumerated without evidence specification per component, or the minimum threshold is not stated. The most common failure: citing a multi-indicator external standard by name and treating the citation as a sufficient specification. Example: "Must qualify as a Digital Public Good" with no enumeration of which of the nine DPG Standard indicators apply, no evidence specification per indicator, and no minimum passage threshold. This is a label, not a criterion specification. |
 
-**Override Condition:** Where an external standard has no published component structure (it is a genuinely binary pass/fail determination with no sub-indicators), the compliance threshold requirement is satisfied by specifying the evidence form for the binary determination. The auditor must verify that the standard is in fact binary with no sub-indicators, not merely that the field designer has treated it as binary for convenience.
+**Override Condition:** Where an external standard has no published component structure (it is a genuinely binary pass/fail determination with no sub-indicators), the conformance threshold requirement is satisfied by specifying the evidence form for the binary determination. The auditor must verify that the standard is in fact binary with no sub-indicators, not merely that the field designer has treated it as binary for convenience.
 
 **Status:** Blocking when any external standard is referenced in the field specification. Not applicable when no external standard is referenced, because this requirement does not apply to self-standing field specifications.
 
@@ -121,7 +121,7 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 | Operational definition | Are all four elements present? | Any element absent | Yes, for exclusion criteria where intentionally empty; advisory waiver for edge case in low-ambiguity fields | Blocking (inclusion criteria); Advisory (edge case) |
 | Response form | Is the form named and justified? | Form absent or unjustified | Yes, for platform constraint on preferred form | Blocking (form name); Advisory (justification) |
 | Evidence form | Does it name a specific verifiable artifact? | Absent or delegates to reviewer judgment | Yes, for qualitative fields; documented verification method required | Blocking (third-party verifiable fields); Advisory (self-report fields) |
-| Compliance threshold | Are components, evidence, and threshold specified per external standard? | Any element absent when external standard referenced | Yes, for binary-only standards | Blocking (when external standard referenced) |
+| Conformance threshold | Are components, evidence, and threshold specified per external standard? | Any element absent when external standard referenced | Yes, for binary-only standards | Blocking (when external standard referenced) |
 
 ---
 
@@ -191,7 +191,7 @@ All blocking criterion specification requirements in Part 2 pass or have documen
 
 No Integrity findings at third-party verifiable strength or above. A field configured at third-party verifiable level whose submitted evidence is entirely respondent-controlled, with no independent corroboration, is a gate failure for Standard certification.
 
-Compliance threshold is specified for every external standard referenced across all fields in the form. A referenced external standard without a compliance threshold is a blocking failure under 2.5.
+Conformance threshold is specified for every external standard referenced across all fields in the form. A referenced external standard without a conformance threshold is a blocking failure under 2.5.
 
 A form certified at Standard level is suitable for human-reviewed evaluation. Reviewers can apply the field specifications consistently, and the resulting data is attributable to real differences in the applicant population rather than to definitional ambiguity.
 
@@ -328,9 +328,9 @@ These assessment questions apply when evaluating field specifications that imple
 
 ### Disbursement Authority Instrument Assessment
 
-1. Does the field specification require one of the three canonical states (Individual, Governed, Delegated) or does it accept generic descriptions that cannot be consistently assessed?
+1. Does the field specification require one of the three canonical states (Individual, Collective, Delegated) or does it accept generic descriptions that cannot be consistently assessed?
 
-2. For Governed state: does the specification require the multisig or governance contract address to be named so it can be resolved on-chain, or does it accept a description of the governance mechanism without a verifiable address?
+2. For Collective state: does the specification require the multisig or governance contract address to be named so it can be resolved on-chain, or does it accept a description of the governance mechanism without a verifiable address?
 
 3. For Delegated state: does the specification require both the receiving entity and the deploying entity to be named, or does it allow a single entity declaration that conceals the delegation?
 
@@ -338,7 +338,7 @@ These assessment questions apply when evaluating field specifications that imple
 
 5. Does the specification state what is required when the disbursement authority address differs from the on-chain identity anchor declared in Field 6, or does it leave that reconciliation undefined?
 
-### Governance Resilience Instrument Assessment
+### Continuity Capacity Instrument Assessment
 
 1. Does the field specification require the named primary contributor to be identified explicitly, or does it accept organizational descriptions that do not name an individual?
 
@@ -346,7 +346,7 @@ These assessment questions apply when evaluating field specifications that imple
 
 3. Is the evidence form specific enough that a reviewer can independently verify whether the named primary contributor is the sole author of the primary deliverable (GitHub contribution history, commit authorship), or does the specification rely on self-report?
 
-4. Does the specification note that Single governance resilience is a risk factor affecting the sustainability stance assessment, or does it present all three states as equivalent for evaluation purposes?
+4. Does the specification note that Single continuity capacity is a risk factor affecting the sustainability stance assessment, or does it present all three states as equivalent for evaluation purposes?
 
 ### Obligation Fulfillment Record Instrument Assessment
 
@@ -378,6 +378,8 @@ These assessment questions apply when evaluating field specifications that imple
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.4 | 2026-06-08 | Disbursement-authority Governed state renamed Collective (the "For Collective state" assessment guidance), completing the Governed-to-Collective rename. The version stamps in the frontmatter and heading, which had lagged at 0.1.2 behind the 0.1.3 changelog entry, are corrected. No assessment content changed; naming only. |
+| 0.1.3 | 2026-05-23 | Primitive rename cascade applied. The "Governance Resilience Instrument Assessment" section is now the "Continuity Capacity Instrument Assessment". Question 4 updated to reference "Single continuity capacity" as a risk factor. The three-state vocabulary (Single, Partial, Resilient) is preserved. Historical changelog entry below retains the prior primitive name as it stood at the time of release. |
 | 0.1.2 | 2026-05-18 | Section 3.8 assessment questions added: five instrument rubrics covering revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, and development stage. Five questions per instrument following the criterion specification element assessment structure. |
 | 0.1.1 | 2026-05-17 | Part 5 added: Identity Instrument Assessment. Assessment questions, pass/fail/override logic, and status for the legal entity instrument (5.1), display name instrument (5.2), prior entity relationship instrument (5.3), and self-reference consistency check (5.4). Summary table added. |
 | 0.1.0 | 2026-05-15 | Initial draft. Five criterion specification assessment questions with pass/fail/override logic. Five data quality standards assessment questions. Certification thresholds for Standard and Enhanced. Override documentation requirements. |

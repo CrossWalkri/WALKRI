@@ -1,14 +1,14 @@
 ---
 title: WALKRI Guidance
-version: 0.1.2
-date: 2026-05-18
+version: 0.1.3
+date: 2026-06-08
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Guidance
 
-Version 0.1.2 | 2026-05-18 | CC0
+Version 0.1.3 | 2026-06-08 | CC0
 
 ---
 
@@ -92,15 +92,15 @@ Labels are names. Intents are measurement claims. The gap between the two is whe
 
 **Most common failure mode.** The evidence form is delegated to reviewer judgment by leaving the artifact type and location unspecified. Phrases such as "documentation of," "evidence of," or "proof of" without a named artifact type always indicate an incomplete evidence form. The evidence form must name a specific artifact. If the criterion intent genuinely admits multiple artifact types that are equally probative, the evidence form must list each acceptable artifact type with the conditions under which it satisfies the criterion.
 
-### 3.5 Compliance Threshold
+### 3.5 Conformance Threshold
 
-**What it asks for.** When a field or criterion references an external standard, the compliance threshold specifies which components of that external standard apply, what evidence satisfies each component, and what the minimum threshold for passage is.
+**What it asks for.** When a field or criterion references an external standard, the conformance threshold specifies which components of that external standard apply, what evidence satisfies each component, and what the minimum threshold for passage is.
 
-**What a complete answer looks like.** A program requiring DPG (Digital Public Good) qualification as a gate criterion must produce a compliance threshold that enumerates all nine indicators of the DPG Standard, states what evidence satisfies each indicator, and names the minimum threshold for passage.
+**What a complete answer looks like.** A program requiring DPG (Digital Public Good) qualification as a gate criterion must produce a conformance threshold that enumerates all nine indicators of the DPG Standard, states what evidence satisfies each indicator, and names the minimum threshold for passage.
 
-For example, a compliance threshold for DPG Indicator 2 (use of an approved open license) might read: "The applicant must provide a clearly stated SPDX license identifier in the project repository's root-level LICENSE file or README. A reference to a license in prose text without an SPDX identifier does not satisfy this indicator. A link to a third-party license text without reproduction or reference in the repository does not satisfy this indicator." The threshold statement for the full set of indicators might read: "All nine indicators must be satisfied for gate passage. Indicators 1, 2, and 3 are non-waivable. For indicators 4 through 9, an applicant who cannot satisfy an indicator may submit a documented mitigation plan; a maximum of two indicators may be satisfied via mitigation plan."
+For example, a conformance threshold for DPG Indicator 2 (use of an approved open license) might read: "The applicant must provide a clearly stated SPDX license identifier in the project repository's root-level LICENSE file or README. A reference to a license in prose text without an SPDX identifier does not satisfy this indicator. A link to a third-party license text without reproduction or reference in the repository does not satisfy this indicator." The threshold statement for the full set of indicators might read: "All nine indicators must be satisfied for gate passage. Indicators 1, 2, and 3 are non-waivable. For indicators 4 through 9, an applicant who cannot satisfy an indicator may submit a documented mitigation plan; a maximum of two indicators may be satisfied via mitigation plan."
 
-**When the requirement applies.** The compliance threshold requirement applies whenever a field references an external standard. A field that uses its own operational definition without reference to an outside framework does not need a compliance threshold; the operational definition itself governs interpretation. The compliance threshold is required only when the field says, in effect, "the applicant must satisfy some external authority's standard," because that construction delegates interpretation to the external standard without specifying how that standard applies in this context.
+**When the requirement applies.** The conformance threshold requirement applies whenever a field references an external standard. A field that uses its own operational definition without reference to an outside framework does not need a conformance threshold; the operational definition itself governs interpretation. The conformance threshold is required only when the field says, in effect, "the applicant must satisfy some external authority's standard," because that construction delegates interpretation to the external standard without specifying how that standard applies in this context.
 
 ---
 
@@ -128,9 +128,9 @@ When the Stage 2 specification is complete, Stage 3 should take significantly le
 
 Organizations that want to improve data collection quality without adopting any external obligation framework use WALKRI's three-stage process and five criterion specification requirements as their complete specification authority. Part III of the standard is the direct specification authority in this case. Nothing in the three-stage process or the five criterion specification requirements assumes that any external obligation standard governs what is being collected.
 
-**The compliance threshold requirement without an external obligation standard.** When no external obligation standard is referenced, the compliance threshold requirement applies only to external standards the form itself references. A form that refers to DPG qualification, OSI-approved licenses, or any other external framework must specify a compliance threshold for that reference. A form that uses only its own operational definitions and does not reference any external standard does not need a compliance threshold for any field.
+**The conformance threshold requirement without an external obligation standard.** When no external obligation standard is referenced, the conformance threshold requirement applies only to external standards the form itself references. A form that refers to DPG qualification, OSI-approved licenses, or any other external framework must specify a conformance threshold for that reference. A form that uses only its own operational definitions and does not reference any external standard does not need a conformance threshold for any field.
 
-When an obligation standard such as CROSS governs the form, that standard's gate criteria may generate compliance threshold requirements for specific fields because the obligation standard specifies what external standards the program must enforce and how. The other four requirements, criterion intent, operational definition, response form, and evidence form, apply identically whether or not an obligation standard is present.
+When an obligation standard such as CROSS governs the form, that standard's gate criteria may generate conformance threshold requirements for specific fields because the obligation standard specifies what external standards the program must enforce and how. The other four requirements, criterion intent, operational definition, response form, and evidence form, apply identically whether or not an obligation standard is present.
 
 **Starting point for independent adoption.** Begin with the ideation session described in Part 2. The diagnostic question, "what decision will this data inform, and what is the failure mode if the data is missing or imprecise?", applies regardless of what the form is for.
 
@@ -152,11 +152,11 @@ This pattern produces bad data because many projects span multiple categories. W
 
 The fix is to change the response form to multi-select when the underlying construct can legitimately take multiple values simultaneously. If the criterion intent genuinely requires a single primary classification, the criterion intent statement must make that explicit ("the primary operational focus of the project, excluding secondary activities") and the operational definition must explain how to determine which category is primary when a project spans multiple categories.
 
-**Failure 3: External standard reference without compliance threshold.** A criterion that reads "the project must be DPG-eligible" or "the project must use an OSI-approved license" without specifying which indicators or requirements apply, what evidence satisfies each, and what the minimum threshold for passage is.
+**Failure 3: External standard reference without conformance threshold.** A criterion that reads "the project must be DPG-eligible" or "the project must use an OSI-approved license" without specifying which indicators or requirements apply, what evidence satisfies each, and what the minimum threshold for passage is.
 
 This pattern produces bad data because the external standard's requirements are not binary, and reviewers must construct their own interpretation of what compliance means. Different reviewers apply different thresholds. Outcomes reflect reviewer assignment rather than applicant compliance with the standard.
 
-The fix is to write a compliance threshold that enumerates the applicable indicators or requirements, specifies the evidence that satisfies each, and names the minimum threshold. The DPG Standard case is worked through in detail in Part 3.5 above. For simpler external standards such as an OSI license list, the compliance threshold is also simpler: "The license must appear on the OSI-approved license list at https://opensource.org/licenses, accessed at the version archived on [date]. SPDX identifiers are acceptable in place of full license names provided the identifier maps to an OSI-approved license on that list."
+The fix is to write a conformance threshold that enumerates the applicable indicators or requirements, specifies the evidence that satisfies each, and names the minimum threshold. The DPG Standard case is worked through in detail in Part 3.5 above. For simpler external standards such as an OSI license list, the conformance threshold is also simpler: "The license must appear on the OSI-approved license list at https://opensource.org/licenses, accessed at the version archived on [date]. SPDX identifiers are acceptable in place of full license names provided the identifier maps to an OSI-approved license on that list."
 
 **Failure 4: Evidence form delegated to reviewer judgment.** A field whose evidence form reads "proof of open source" or "documentation of community engagement" or any other phrase that names a category of evidence rather than a specific artifact.
 
@@ -192,7 +192,7 @@ An override-documented status means the field produced a flag that the question-
 
 **What to do with a fail finding.** Not all fail findings block publication; some are advisory.
 
-A blocking failure must be resolved before the form can be published. Blocking failures are those where leaving the flag unresolved would produce data that is definitionally incoherent, unauditable, or misleading. The following are blocking: a field with no criterion intent (Failure 1 from Part 6); a field with an external standard reference but no compliance threshold (Failure 3); and a field whose evidence form is entirely absent. These failures do not admit override because there is no basis for a defensible justification of why the field should be published without the missing element.
+A blocking failure must be resolved before the form can be published. Blocking failures are those where leaving the flag unresolved would produce data that is definitionally incoherent, unauditable, or misleading. The following are blocking: a field with no criterion intent (Failure 1 from Part 6); a field with an external standard reference but no conformance threshold (Failure 3); and a field whose evidence form is entirely absent. These failures do not admit override because there is no basis for a defensible justification of why the field should be published without the missing element.
 
 An advisory failure should be resolved before the next round but does not block publication. Advisory failures include missing exclusion criteria (Failure 5), response form mismatches that are marginal rather than severe (Failure 6), and evidence form weaknesses where an artifact type is named but insufficiently specified. A form with advisory failures can be published with a documented plan to resolve the failures before the subsequent reporting period. The advisory status must be recorded in the conformance record.
 
@@ -214,7 +214,7 @@ When resolving a fail finding, return to the Stage 2 specification for the affec
 
 **Evidence form.** The specific artifact that satisfies the criterion, with its type, location, access path, and content requirements. Failure mode when absent: reviewers make implicit artifact quality judgments inconsistently across the cohort; the data cannot be audited.
 
-**Compliance threshold.** When an external standard is referenced: which components apply, what evidence satisfies each, and the minimum threshold for passage. Failure mode when absent: reviewer-level interpretation of the external standard becomes the de facto threshold; outcomes reflect reviewer assignment rather than applicant compliance.
+**Conformance threshold.** When an external standard is referenced: which components apply, what evidence satisfies each, and the minimum threshold for passage. Failure mode when absent: reviewer-level interpretation of the external standard becomes the de facto threshold; outcomes reflect reviewer assignment rather than applicant compliance.
 
 ### Five Data Quality Standards
 
@@ -276,13 +276,13 @@ When building the ideation record for a program that uses continuation gates, na
 
 ## Part 9: Working with Gate Declaration Fields (Section 3.8)
 
-Section 3.8 adds five WALKRI instruments for the CROSS entry gate declarations. These differ from the identity instruments in Section 3.7 in one key respect: each instrument maps to a CROSS primitive that constrains what the applicant can validly claim elsewhere in the application. A revenue architecture declaration of "grant-only" makes a concurrent commercial revenue disclosure inconsistent. A governance resilience state of "single" makes a sustainability stance of "sustained" implausible at completion. The gate declaration instruments are not independent fields; they form a constraint network across the application.
+Section 3.8 adds five WALKRI instruments for the CROSS entry gate declarations. These differ from the identity instruments in Section 3.7 in one key respect: each instrument maps to a CROSS primitive that constrains what the applicant can validly claim elsewhere in the application. A revenue architecture declaration of "grant-only" makes a concurrent commercial revenue disclosure inconsistent. A Continuity Capacity state of "single" makes a sustainability stance of "sustained" implausible at completion. The gate declaration instruments are not independent fields; they form a constraint network across the application.
 
 **Revenue architecture instrument:** Guide applicants to classify their revenue architecture honestly by asking them to name their revenue sources, not just their grant needs. The question "What would your project's budget look like if this grant were not awarded?" surfaces the architecture more reliably than "What is your revenue model?" Commercial revenue signals include: active token contracts, service agreements named in the application, product pricing pages, and prior investor disclosures. Grant-only declarations from entities with governance tokens require investigation.
 
-**Disbursement authority instrument:** The three-state structure (Individual, Governed, Delegated) exists because a text field asking "who receives funds" produces unverifiable narrative. The instrument requires naming specific mechanisms and individuals. For Governed state, require the multisig address or governance contract to be named explicitly so it can be resolved on-chain. For Delegated state, require both the receiving entity and the deploying entity to be named. The most common error is applicants selecting Individual when a multisig exists that is not named.
+**Disbursement authority instrument:** The three-state structure (Individual, Collective, Delegated) exists because a text field asking "who receives funds" produces unverifiable narrative. The instrument requires naming specific mechanisms and individuals. For Collective state, require the multisig address or governance contract to be named explicitly so it can be resolved on-chain. For Delegated state, require both the receiving entity and the deploying entity to be named. The most common error is applicants selecting Individual when a multisig exists that is not named.
 
-**Governance resilience instrument:** The key diagnostic question is: if the named primary contributor stopped working tomorrow, would the project continue? Single state is not a disqualifier but it is a risk factor that affects the sustainability stance assessment. Programs should ask applicants to name their primary contributor explicitly, not just describe their governance structure generically.
+**Continuity Capacity instrument:** The key diagnostic question is: if the named primary contributor stopped working tomorrow, would the project continue? Single state is not a disqualifier but it is a risk factor that affects the sustainability stance assessment. Programs should ask applicants to name their primary contributor explicitly, not just describe their governance structure generically.
 
 **Obligation fulfillment record instrument:** This instrument activates only for returning applicants and applicants citing prior work. The assessment procedure is sequential: check the KarmaGAP API for grants associated with the applicant's wallet address before reading the applicant's self-report. Discovering grants the applicant did not disclose is a material non-disclosure, treated more severely than a disclosed partial fulfillment.
 
@@ -294,6 +294,7 @@ Section 3.8 adds five WALKRI instruments for the CROSS entry gate declarations. 
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.3 | 2026-06-08 | Primitive rename cascade propagated: the Governance Resilience instrument is now the Continuity Capacity instrument, and the disbursement-authority Governed state is now Collective (the "For Collective state" guidance). Propagates the Foundation v0.1.7 and v0.2.2 renames. No guidance content or requirement changed; naming only. |
 | 0.1.2 | 2026-05-18 | Part 9 added: Working with Gate Declaration Fields (Section 3.8). Covers the five gate declaration instruments: revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, development stage. Constraint network framing between instruments. Activation rule for obligation fulfillment record. Evidence plausibility by stage for development stage instrument. |
 | 0.1.1 | 2026-05-17 | Part 8 added: Working with Identity Fields (Section 3.7). Covers the three instrument types (legal entity, display name, prior entity relationship), design principles and failure modes for each, the self-reference consistency requirement, and design notes for programs using continuation gates. |
 | 0.1.0 | 2026-05-15 | Initial draft. Seven parts covering the three-stage process, field specification requirements, applicant guidance, common failure modes, and audit report reading. |

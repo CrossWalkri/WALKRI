@@ -1,4 +1,4 @@
-# WALKRI: Working Architecture for Legible, Knowledge-Ready Intake
+# WALKRI: Working Architecture for Legible, Knowable, Reliable Instrumentation
 
 Version 0.1.7 | 2026-05-19 | CC0
 
@@ -48,7 +48,7 @@ Five requirements apply to every intake field before any applicant sees it.
 
 **Evidence form:** The field must identify the specific artifact type and access path required to answer it. Not "evidence of open source status" but "a URL to the LICENSE file in the root directory of a publicly accessible repository." The evidence form structurally separates what counts as evidence from who benefits from favorable assessment.
 
-**Compliance threshold:** For fields referencing external standards (a DPG Standard, ISO certification, a regulatory requirement), the field must enumerate which components of the standard apply and what minimum passage level constitutes compliance.
+**Conformance threshold:** For fields referencing external standards (a DPG Standard, ISO certification, a regulatory requirement), the field must enumerate which components of the standard apply and what minimum passage level constitutes compliance.
 
 A field that satisfies all five is a measurement instrument. A field that fails any one is a label. The distinction is structural, not a matter of degree.
 
@@ -60,15 +60,15 @@ WALKRI also specifies five gate declaration instruments that apply at the progra
 
 Field quality at the specification stage compounds upward through every layer of the grants ecosystem. Here is what each layer gains.
 
-**Grantees** know exactly what a field requires before they write a word. The operational definition includes qualifying and non-qualifying examples. The compliance threshold states what passage looks like. Professional grant writers no longer have a structural advantage over subject matter experts, because the form itself carries the information previously available only to experienced applicants.
+**Grantees** know exactly what a field requires before they write a word. The operational definition includes qualifying and non-qualifying examples. The conformance threshold states what passage looks like. Professional grant writers no longer have a structural advantage over subject matter experts, because the form itself carries the information previously available only to experienced applicants.
 
-**Reviewers** get calibration built into the field rather than requiring separate calibration sessions. Two reviewers reading the same operational definition reach consistent judgments. Scoring variance is a structural consequence of underspecified fields; WALKRI eliminates the source rather than training reviewers to manage it. The compliance threshold makes reviewer disagreement a traceable discrepancy, not an irresolvable difference of opinion.
+**Reviewers** get calibration built into the field rather than requiring separate calibration sessions. Two reviewers reading the same operational definition reach consistent judgments. Scoring variance is a structural consequence of underspecified fields; WALKRI eliminates the source rather than training reviewers to manage it. The conformance threshold makes reviewer disagreement a traceable discrepancy, not an irresolvable difference of opinion.
 
 **Program operators** can audit their own fields before a round opens. A field flagged as a label by the WALKRI rubric can be specified correctly in hours. A label that went live and collected a round of responses cannot be fixed retroactively. The pre-publication audit is the only point in the process where this correction costs nothing.
 
 **Analysts** get data that is structurally comparable across programs. Ten programs asking WALKRI-conformant versions of "is this open source?" produce data that aggregates directly. Ten programs asking label versions of the same question produce ten different constructs that look identical but are not. Portfolio analysis, cross-program benchmarking, and longitudinal tracking all depend on the conformant version.
 
-**AI-assisted review** becomes criterion-referenced rather than pattern-matched. A language model assessing a response against a WALKRI-conformant field specification is working with defined criteria, qualifying examples, an evidence requirement, and a compliance threshold. Without WALKRI, AI review is inferring intent from a label. With it, AI review is applying a specification. The difference is not in the model; it is in whether the field gives the model something precise to assess against.
+**AI-assisted review** becomes criterion-referenced rather than pattern-matched. A language model assessing a response against a WALKRI-conformant field specification is working with defined criteria, qualifying examples, an evidence requirement, and a conformance threshold. Without WALKRI, AI review is inferring intent from a label. With it, AI review is applying a specification. The difference is not in the model; it is in whether the field gives the model something precise to assess against.
 
 **Platform providers** gain ecosystem-wide data comparability from a single conformance requirement. Every program running on a WALKRI-conformant platform produces data that is structurally comparable to every other program, regardless of what the programs fund, how they select, or which indicators they use.
 
@@ -133,7 +133,7 @@ WALKRI's five requirements encode the same underlying measurement quality princi
 | USAID criterion | WALKRI requirement | How WALKRI satisfies it |
 |:--|:--|:--|
 | Validity | Criterion intent + Operational definition | Written statement of what the field measures with qualifying and non-qualifying examples |
-| Reliability | Operational definition + Compliance threshold | Precise definition constrains interpretation; calibration requirement ensures consistency across reviewers |
+| Reliability | Operational definition + Conformance threshold | Precise definition constrains interpretation; calibration requirement ensures consistency across reviewers |
 | Precision | Response form | Response type justified as appropriate for the criterion intent; determines measurement resolution |
 | Integrity | Evidence form | Specifies artifact type and independent access path, separating evidence from beneficiary |
 | Timeliness | Evidence form | Specifies recency requirement and time-period for evidence collection |
@@ -148,7 +148,7 @@ WALKRI's five requirements encode the same underlying measurement quality princi
 
 **Open Source Observer (OSO)** maintains the oss-directory schema (v7) as the primary registry for open source project identity in the Web3 ecosystem. CROSS Field 6 (on-chain identity anchor) maps directly to the OSO blockchain address registration fields. A WALKRI-conformant recipient profile that includes the on-chain identity anchor, GitHub URL, and npm package identifiers is directly importable as an OSO oss-directory entry. OSO metrics (commit activity, contributor count, on-chain transaction data) are also the natural evidence source for CROSS gate tests in Build and Change obligation programs, providing independent, reproducible verification that does not rely on applicant self-reporting.
 
-**Research funder data management standards** (NIH DMS Policy, NSF DMP Requirements, Horizon Europe Open Science, Wellcome Trust Data and Materials Policy) all require a Data Management Plan specifying data types, metadata standards, repositories, and access paths, prepared before data is collected or at application stage. WALKRI's five field specification requirements produce this DMP content as a structural byproduct: criterion intent documents data types, operational definition documents metadata standards and counting rules, response form justification documents data format, evidence form documents repository and access path, and compliance threshold documents any external classification or vocabulary standard. Programs running WALKRI audit before publishing their forms have produced a DMP before any applicant submits. Formal statement: `Research-Funder-DMP-Standards-WALKRI-compatibility-0_1_0.md`.
+**Research funder data management standards** (NIH DMS Policy, NSF DMP Requirements, Horizon Europe Open Science, Wellcome Trust Data and Materials Policy) all require a Data Management Plan specifying data types, metadata standards, repositories, and access paths, prepared before data is collected or at application stage. WALKRI's five field specification requirements produce this DMP content as a structural byproduct: criterion intent documents data types, operational definition documents metadata standards and counting rules, response form justification documents data format, evidence form documents repository and access path, and conformance threshold documents any external classification or vocabulary standard. Programs running WALKRI audit before publishing their forms have produced a DMP before any applicant submits. Formal statement: `Research-Funder-DMP-Standards-WALKRI-compatibility-0_1_0.md`.
 
 **SROI (Social Return on Investment) / Social Value International** seven principles require verification and transparency in impact claims. WALKRI's evidence form requirement, which specifies the artifact type and independent access path for every intake field, structurally satisfies the verification principle by separating evidence from beneficiary self-report.
 

@@ -47,8 +47,8 @@ The table below maps every current CROSS v0.3.7 Part and subsection to one of fo
 | Part IV: Infrastructure declaration | CROSS | Funder-side process obligation; published before the round opens |
 | Part IV: Proportionality | CROSS | Scaling logic calibrated by the Coordination Scaling Standard |
 | Part IV: Cost-effectiveness for continuation | CROSS | Continuation criterion; obligation architecture |
-| Part IV: External Standard References | WALKRI | URL, version anchor, scope, and compliance threshold protocol governed by WALKRI Part VI |
-| Part IV: Gate Criterion Specification | WALKRI | The five criterion specification requirements (criterion intent, operational definition, response form, evidence form, compliance threshold) governed by WALKRI Part III |
+| Part IV: External Standard References | WALKRI | URL, version anchor, scope, and conformance threshold protocol governed by WALKRI Part VI |
+| Part IV: Gate Criterion Specification | WALKRI | The five criterion specification requirements (criterion intent, operational definition, response form, evidence form, conformance threshold) governed by WALKRI Part III |
 | Part V: Indicator Specification - field list (what fields are required) | CROSS | The obligation to provide each named field is governed by CROSS |
 | Part V: Indicator Specification - operational definition content requirements | WALKRI | Inclusion criteria, exclusion criteria, unit of analysis, and edge case determination governed by WALKRI Part III, Criterion 2 |
 | Part V: Indicator Specification - construction methodology quality | WALKRI | Quality standards for construction and aggregation methodology governed by WALKRI |
@@ -95,7 +95,7 @@ CROSS references WALKRI at four locations. The following specifies what a confor
 
 **Reference Point 2: External Standard References (CROSS Part IV)**
 
-"External standard references in a CROSS-conformant gate must follow the WALKRI External Standard Reference Protocol (WALKRI-standard-0_1_0.md, Part VI), including URL, version anchor, and compliance threshold specification."
+"External standard references in a CROSS-conformant gate must follow the WALKRI External Standard Reference Protocol (WALKRI-standard-0_1_0.md, Part VI), including URL, version anchor, and conformance threshold specification."
 
 **Reference Point 3: Operational Definition Requirements (CROSS Part V)**
 

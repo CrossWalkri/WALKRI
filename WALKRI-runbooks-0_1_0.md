@@ -98,7 +98,7 @@ Response form: Single-select from a list of accepted SPDX identifiers, plus a te
 
 Evidence form: The named SPDX license identifier appears in a LICENSE file at the root of the repository or in the package manifest at time of completion.
 
-Compliance threshold: Accepted identifiers are any OSI-approved SPDX identifiers. The compliance threshold is: the SPDX identifier is named explicitly, the license file exists in the repository root or package manifest, and the license is in the OSI-approved list. A license that restricts commercial use (e.g. CC-BY-NC) does not satisfy this threshold regardless of how it is labeled.
+Conformance threshold: Accepted identifiers are any OSI-approved SPDX identifiers. The conformance threshold is: the SPDX identifier is named explicitly, the license file exists in the repository root or package manifest, and the license is in the OSI-approved list. A license that restricts commercial use (e.g. CC-BY-NC) does not satisfy this threshold regardless of how it is labeled.
 
 Status: Core
 
@@ -736,9 +736,9 @@ Status: Core
 
 ### 9. DPG Standard
 
-Context: Programs requiring Digital Public Good qualification as a gate criterion. This runbook provides pre-audited field specifications for assessing all nine DPG Standard indicators (github.com/DPGAlliance/DPG-Standard, tag v1.1.7) with explicit compliance thresholds for each.
+Context: Programs requiring Digital Public Good qualification as a gate criterion. This runbook provides pre-audited field specifications for assessing all nine DPG Standard indicators (github.com/DPGAlliance/DPG-Standard, tag v1.1.7) with explicit conformance thresholds for each.
 
-Registry note: the DPGA registry records past assessments at the time of registration, not current qualification status. Registry membership accepted as evidence at the time of registration does not constitute evidence of current compliance with each indicator. The compliance threshold for each indicator below specifies whether registry membership is accepted as sufficient evidence or whether independent indicator assessment is required regardless of registry status. Programs should assume independent indicator assessment is required unless the threshold note explicitly accepts registry membership.
+Registry note: the DPGA registry records past assessments at the time of registration, not current qualification status. Registry membership accepted as evidence at the time of registration does not constitute evidence of current compliance with each indicator. The conformance threshold for each indicator below specifies whether registry membership is accepted as sufficient evidence or whether independent indicator assessment is required regardless of registry status. Programs should assume independent indicator assessment is required unless the threshold note explicitly accepts registry membership.
 
 ---
 
@@ -772,7 +772,7 @@ Response form: Long text. Justification: the SDG relationship requires narrative
 
 Evidence form: Named SDG and target are from the official SDG list. The stated contribution mechanism is internally consistent with the digital good's function.
 
-Compliance threshold: Registry membership is not accepted as evidence of current SDG relevance. Independent indicator assessment is required: the named SDG and target must be present in the submission, and the contribution mechanism must be traceable from the submission without reference to the registry entry.
+Conformance threshold: Registry membership is not accepted as evidence of current SDG relevance. Independent indicator assessment is required: the named SDG and target must be present in the submission, and the contribution mechanism must be traceable from the submission without reference to the registry entry.
 
 Status: Core
 
@@ -788,7 +788,7 @@ Response form: Single-select SPDX identifier plus the URL of the LICENSE file. J
 
 Evidence form: The SPDX identifier resolves to an OSI-approved license (for software) or a Creative Commons license without NC or ND restrictions (for content). The LICENSE file exists at the named URL.
 
-Compliance threshold: Registry membership is not accepted as a substitute for current license verification. The license file must exist and be accessible at the time of submission. A change of license since registry registration requires new independent verification.
+Conformance threshold: Registry membership is not accepted as a substitute for current license verification. The license file must exist and be accessible at the time of submission. A change of license since registry registration requires new independent verification.
 
 Status: Core
 
@@ -804,7 +804,7 @@ Response form: Short text for the owner name; URL for the ownership documentatio
 
 Evidence form: The owner name is independently verifiable from the documentation URL. The documentation URL is publicly accessible without authentication.
 
-Compliance threshold: Registry membership is accepted as evidence of ownership documentation only if the registry entry contains the ownership statement and is current. If the registry entry is more than 12 months old or the ownership has changed since registration, independent verification is required.
+Conformance threshold: Registry membership is accepted as evidence of ownership documentation only if the registry entry contains the ownership statement and is current. If the registry entry is more than 12 months old or the ownership has changed since registration, independent verification is required.
 
 Status: Core
 
@@ -820,7 +820,7 @@ Response form: Long text. Justification: platform independence depends on the sp
 
 Evidence form: The stated dependencies are cross-referenceable against the repository's dependency manifest. The named dependencies are open source or otherwise freely available without proprietary restriction.
 
-Compliance threshold: Registry membership is not accepted as evidence of current platform independence. The dependency manifest must be assessed at the time of submission.
+Conformance threshold: Registry membership is not accepted as evidence of current platform independence. The dependency manifest must be assessed at the time of submission.
 
 Status: Core
 
@@ -836,7 +836,7 @@ Response form: URL pointing to the documentation root. Short text confirming the
 
 Evidence form: The documentation URL resolves and is publicly accessible. The three documentation types are present and apply to the current version of the good.
 
-Compliance threshold: Registry membership is not accepted as evidence of current documentation completeness. Documentation must be assessed against the current version of the good at the time of submission.
+Conformance threshold: Registry membership is not accepted as evidence of current documentation completeness. Documentation must be assessed against the current version of the good at the time of submission.
 
 Status: Core
 
@@ -852,7 +852,7 @@ Response form: Long text. Justification: data collection and transmission practi
 
 Evidence form: The stated data practices are consistent with the technical architecture as documented in the repository. Any third-party data recipients are named.
 
-Compliance threshold: Registry membership is not accepted as evidence of current data practice. The technical architecture and any data transmission must be assessed from the current codebase at the time of submission.
+Conformance threshold: Registry membership is not accepted as evidence of current data practice. The technical architecture and any data transmission must be assessed from the current codebase at the time of submission.
 
 Status: Core
 
@@ -868,7 +868,7 @@ Response form: Long text. Justification: legal compliance requirements vary by j
 
 Evidence form: Named laws are verifiable legal standards in the stated jurisdictions. The compliance mechanism is internally consistent with the digital good's architecture. A privacy impact assessment, if cited, is accessible.
 
-Compliance threshold: Registry membership is not accepted as evidence of current legal compliance. Applicable law changes after registration require independent reassessment.
+Conformance threshold: Registry membership is not accepted as evidence of current legal compliance. Applicable law changes after registration require independent reassessment.
 
 Status: Core
 
@@ -884,7 +884,7 @@ Response form: Long text. Justification: applicable standards vary by domain and
 
 Evidence form: Named standards are independently verifiable specifications. The stated adherence mechanism is consistent with the project's technical practices.
 
-Compliance threshold: Registry membership is not accepted as evidence of current standards adherence. Standards evolve, and adherence must be assessed against the current version of each named standard at the time of submission.
+Conformance threshold: Registry membership is not accepted as evidence of current standards adherence. Standards evolve, and adherence must be assessed against the current version of each named standard at the time of submission.
 
 Status: Core
 
@@ -900,7 +900,7 @@ Response form: URL of the data use policy. Long text summary of key provisions. 
 
 Evidence form: The policy URL resolves and is publicly accessible. The key provisions stated in the summary are present in the policy. The policy applies to the current version of the digital good.
 
-Compliance threshold: Registry membership is not accepted as evidence of a current and accessible data use policy. The policy must be assessed at the time of submission.
+Conformance threshold: Registry membership is not accepted as evidence of a current and accessible data use policy. The policy must be assessed at the time of submission.
 
 Status: Core
 

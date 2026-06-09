@@ -1,14 +1,14 @@
 ---
 title: WALKRI Interface Specification
-version: 0.1.0
-date: 2026-05-15
+version: 0.1.1
+date: 2026-06-08
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Interface Specification
 
-Version 0.1.0 | 2026-05-15 | CC0
+Version 0.1.1 | 2026-06-08 | CC0
 
 ---
 
@@ -44,23 +44,23 @@ An obligation standard that formally references WALKRI must provide the followin
 
 **Whether the field is required or optional at each gate.** For multi-gate processes (like the CROSS two-level gate), the obligation standard specifies which fields are required at the first gate (typically a lighter specification requirement) and which are required at the second gate (typically the full specification requirement). Fields that are optional at one gate may be required at another.
 
-**Any external standards the field must reference.** If the obligation standard requires applicants to demonstrate compliance with a third-party standard (e.g., the Digital Public Goods Standard, SPDX license identifiers, WCAG accessibility standards), the obligation standard must name those external standards and their version anchors. WALKRI's External Standard Reference Protocol (Part VI of the WALKRI standard) then governs how those references are encoded in field specifications.
+**Any external standards the field must reference.** If the obligation standard requires applicants to demonstrate conformance with a third-party standard (e.g., the Digital Public Goods Standard, SPDX license identifiers, WCAG accessibility standards), the obligation standard must name those external standards and their version anchors. WALKRI's External Standard Reference Protocol (Part VI of the WALKRI standard) then specifies how those references are encoded in field specifications.
 
 ### 2.2 What WALKRI Provides Back to the Obligation Standard
 
 For each field in a WALKRI-certified form, WALKRI produces:
 
-**A conformance record entry for each field.** The entry states the pass, fail, or override status for each of the five criterion specification requirements (criterion intent, operational definition, response form, evidence form, compliance threshold). It also records any override justifications for fields that were flagged but passed via documented override.
+**A conformance record entry for each field.** The entry states the pass, fail, or override status for each of the five criterion specification requirements (criterion intent, operational definition, response form, evidence form, conformance threshold). It also records any override justifications for fields that were flagged but passed via documented override.
 
 **The certification tier achieved.** WALKRI recognizes two certification tiers: Standard and Enhanced. Standard certification requires all five criterion specification requirements to be satisfied for all fields, with overrides permitted where documented. Enhanced certification additionally requires Croissant metadata generation, W3C PROV provenance graph output per response, and a publicly published conformance record with a stable URI. The obligation standard specifies which tier it requires; WALKRI reports the tier achieved.
 
-**The field specification version governing each gate assessment.** Because field specifications evolve independently of the standard, the conformance record binds the assessment to a specific field specification version. This version anchor is the mechanism that ensures a downstream consumer can determine which definition governed the data collected in any given reporting period.
+**The field specification version that applies to each gate assessment.** Because field specifications evolve independently of the standard, the conformance record binds the assessment to a specific field specification version. This version anchor is the mechanism that ensures a downstream consumer can determine which definition applied to the data collected in any given reporting period.
 
 ### 2.3 CROSS Connection
 
-CROSS references WALKRI for Gate Criterion Specification and Data Quality Standards. A CROSS-conformant program satisfies both references by running all gate criterion fields through WALKRI audit before the round opens. The enforcement mechanism is the Grant Configurator's field clarity gate: no field that fails WALKRI audit (with unresolved, undocumented flags) may be published to applicants.
+CROSS references WALKRI for Gate Criterion Specification and Data Quality Standards. A CROSS-conformant program satisfies both references by running all gate criterion fields through WALKRI audit before the round opens. This is implemented by the Grant Configurator's field clarity gate: no field that fails WALKRI audit (with unresolved, undocumented flags) may be published to applicants.
 
-Implementers deploying CROSS and WALKRI together should consult WALKRI-CROSS-boundary-0_1_0.md, which specifies, for each CROSS requirement, whether CROSS or WALKRI is the governing authority.
+Implementers deploying CROSS and WALKRI together should consult WALKRI-CROSS-boundary-0_1_0.md, which specifies, for each CROSS requirement, whether CROSS or WALKRI is the applicable authority.
 
 ### 2.4 Generic Connection for Non-CROSS Obligation Standards
 
@@ -80,7 +80,7 @@ WALKRI's native format is JSON Schema (draft-07 or later). This section specifie
 
 ### 3.1 The WALKRI JSON Schema Profile
 
-The WALKRI JSON Schema profile adds custom properties to each field definition using the `x-walkri-` prefix convention. These properties are vendor extensions in JSON Schema terms; compliant JSON Schema validators ignore properties they do not recognize, so WALKRI-extended schemas remain valid JSON Schema.
+The WALKRI JSON Schema profile adds custom properties to each field definition using the `x-walkri-` prefix convention. These properties are vendor extensions in JSON Schema terms; conformant JSON Schema validators ignore properties they do not recognize, so WALKRI-extended schemas remain valid JSON Schema.
 
 The following custom properties are required for a WALKRI-conformant field definition:
 
@@ -95,7 +95,7 @@ The following custom properties are required for a WALKRI-conformant field defin
   },
   "x-walkri-response-form-justification": "string (required)",
   "x-walkri-evidence-form": "string (required)",
-  "x-walkri-compliance-threshold": {
+  "x-walkri-conformance-threshold": {
     "standard-url": "string (URI, required when an external standard is referenced)",
     "version-anchor": "string (required when an external standard is referenced)",
     "required-components": ["array of strings"],
@@ -115,11 +115,11 @@ Each property maps directly to a WALKRI criterion specification requirement:
 | `x-walkri-operational-definition` | Operational Definition (Part III, 3.2) |
 | `x-walkri-response-form-justification` | Response Form (Part III, 3.3) |
 | `x-walkri-evidence-form` | Evidence Form (Part III, 3.4) |
-| `x-walkri-compliance-threshold` | Compliance Threshold (Part III, 3.5) |
+| `x-walkri-conformance-threshold` | Conformance Threshold (Part III, 3.5) |
 | `x-walkri-specification-version` | Field Specification Version (Part VII, 7.1) |
 | `x-walkri-specification-date` | Specification Timestamp (Part VII, 7.1) |
 
-The `x-walkri-compliance-threshold` object is required whenever the field references an external standard. When no external standard is referenced, the property must still be present but may carry `{"minimum-threshold": "none"}` to make the absence of a referenced standard explicit rather than leaving the property absent (which would be ambiguous between "no standard referenced" and "this property was not yet specified").
+The `x-walkri-conformance-threshold` object is required whenever the field references an external standard. When no external standard is referenced, the property must still be present but may carry `{"minimum-threshold": "none"}` to make the absence of a referenced standard explicit rather than leaving the property absent (which would be ambiguous between "no standard referenced" and "this property was not yet specified").
 
 The `x-walkri-operational-definition.exclusion` field accepts the string `"none"` as a valid documented value when there are genuinely no exclusion conditions. A blank field is an incomplete specification; `"none"` is a positive assertion that the field designer has considered exclusions and found none applicable.
 
@@ -149,7 +149,7 @@ XLSForm is a widely used open standard for defining surveys, used by KoBoToolbox
 | `x-walkri-evidence-form` | `bind::walkri:evidence` (custom bind column) |
 | `x-walkri-operational-definition` | `constraint_message` (for validation failure text) + `x-walkri-operational-definition` (metadata column) |
 | `x-walkri-response-form-justification` | `x-walkri-response-form-justification` (metadata column) |
-| `x-walkri-compliance-threshold` | `x-walkri-compliance-threshold` (metadata column as JSON string) |
+| `x-walkri-conformance-threshold` | `x-walkri-conformance-threshold` (metadata column as JSON string) |
 | `x-walkri-specification-version` | `x-walkri-specification-version` (metadata column) |
 | `x-walkri-specification-date` | `x-walkri-specification-date` (metadata column) |
 
@@ -174,7 +174,7 @@ WALKRI maps REDCap export columns to draft field specification content as follow
 | `Text Validation Min` / `Max` | Maps to JSON Schema `minimum`/`maximum` or `minLength`/`maxLength` |
 | `Field Type` | Maps to JSON Schema `type` and informs response form |
 
-REDCap import produces a WALKRI field specification draft requiring Stage 2 completion. The draft populates criterion intent from the Field Label and option definitions from Choices, but `x-walkri-operational-definition.exclusion`, `x-walkri-operational-definition.unit-of-analysis`, `x-walkri-operational-definition.edge-case`, `x-walkri-response-form-justification`, `x-walkri-evidence-form`, and `x-walkri-compliance-threshold` all require Stage 2 authorship before the specification is conformant.
+REDCap import produces a WALKRI field specification draft requiring Stage 2 completion. The draft populates criterion intent from the Field Label and option definitions from Choices, but `x-walkri-operational-definition.exclusion`, `x-walkri-operational-definition.unit-of-analysis`, `x-walkri-operational-definition.edge-case`, `x-walkri-response-form-justification`, `x-walkri-evidence-form`, and `x-walkri-conformance-threshold` all require Stage 2 authorship before the specification is conformant.
 
 ### 3.5 Form Tool Compatibility Checklist
 
@@ -258,9 +258,9 @@ WALKRI satisfies the four FAIR principles as follows.
 
 **Accessible.** Form specifications and conformance records are published in JSON Schema format, which is an open, machine-readable format with no license restrictions. No authentication is required to read WALKRI field specifications; they are designed to be open reference documents.
 
-**Interoperable.** JSON Schema with `x-walkri-` extensions is parseable by any JSON Schema tool; the extensions are ignored by validators that do not know about them, and consumed by validators that do. The `x-walkri-` namespace is reserved for WALKRI use. No conflicts with other JSON Schema extension namespaces have been identified as of v0.1.0.
+**Interoperable.** JSON Schema with `x-walkri-` extensions is parseable by any JSON Schema tool; the extensions are ignored by validators that do not know about them, and consumed by validators that do. The `x-walkri-` namespace is reserved for WALKRI use. No conflicts with other JSON Schema extension namespaces have been identified as of v0.1.1.
 
-**Reusable.** The provenance envelope provides the version, specification metadata, license, and form tool class required for a downstream consumer to assess whether a dataset is reusable for their purpose. A consumer who receives a WALKRI-enriched dataset can determine: which version of each field definition governed the data; which version of the WALKRI standard governed the audit; and whether the form was certified. This is the minimum information required for a reusability assessment.
+**Reusable.** The provenance envelope provides the version, specification metadata, license, and form tool class required for a downstream consumer to assess whether a dataset is reusable for their purpose. A consumer who receives a WALKRI-enriched dataset can determine: which version of each field definition applied to the data; which version of the WALKRI standard applied to the audit; and whether the form was certified. This is the minimum information required for a reusability assessment.
 
 ### 4.4 W3C PROV Alignment
 
@@ -283,4 +283,12 @@ The provenance graph for a single response contains at minimum: the response ent
 
 ---
 
-*End of WALKRI Interface Specification v0.1.0*
+## Changelog
+
+| Version | Date | Summary |
+|---|---|---|
+| 0.1.1 | 2026-06-08 | Conformance-threshold rename formalized and Frame Language own-voice pass applied. The machine annotation key `x-walkri-compliance-threshold` is now `x-walkri-conformance-threshold` and the display name is "Conformance Threshold" throughout, completing the WALKRI element rename (matching the JSON schemas at @0.2.1); this is a breaking key rename for any tool reading the old annotation. Six own-voice watchlist terms recast: "compliance" with a third-party standard to "conformance"; "governs/governing/governed" to "specifies/applies to/applied to"; the "enforcement mechanism" gloss to "implemented by". No field, requirement, or wire format changed beyond the documented annotation-key rename; naming and own-voice only. |
+
+---
+
+*End of WALKRI Interface Specification v0.1.1*

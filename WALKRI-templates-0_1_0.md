@@ -1,14 +1,14 @@
 ---
 title: WALKRI Templates
-version: 0.1.2
-date: 2026-05-18
+version: 0.1.4
+date: 2026-06-08
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Templates
 
-Version 0.1.2 | 2026-05-18 | CC0
+Version 0.1.4 | 2026-06-08 | CC0
 
 These templates correspond to the four artifacts produced by the WALKRI three-stage process: the Ideation Record (Stage 1), the WALKRI Field Specification (Stage 2), the Applicant Guidance Document (Stage 3), and the WALKRI Audit Report (conformance record). Each template includes a brief description and field-by-field instructions. Placeholder text appears in [brackets].
 
@@ -82,7 +82,7 @@ Notes on known complexity or edge cases: [Optional. Record anything that may
 
 ### What it is and when it is used
 
-The WALKRI Field Specification is the Stage 2 output and the central artifact of the entire process. One specification is produced per field. The specification contains all five criterion specification requirements from Part III of the WALKRI standard: criterion intent, operational definition, response form, evidence form, and compliance threshold.
+The WALKRI Field Specification is the Stage 2 output and the central artifact of the entire process. One specification is produced per field. The specification contains all five criterion specification requirements from Part III of the WALKRI standard: criterion intent, operational definition, response form, evidence form, and conformance threshold.
 
 The field specification governs everything downstream: it is the source for the Stage 3 applicant guidance, the artifact the WALKRI Audit Tool assesses, and the machine-readable definition that travels with the collected data. A field cannot be certified without a complete specification.
 
@@ -190,7 +190,7 @@ Evidence form: [The specific artifact that satisfies this criterion. For
   A screenshot or copy-paste of license text is not acceptable in place of a
   live URL."]
 
---- B5: Compliance Threshold (complete this section only if this field references
+--- B5: Conformance Threshold (complete this section only if this field references
   an external standard) ---
 
 External standard: [Name of the standard and its canonical URL.
@@ -201,7 +201,7 @@ Version anchor: [Dated access record, version number, or content hash identifyin
 
 Required components: [List each required sub-indicator or component of the external
   standard that applies to this field. Do not summarize; list each component
-  separately so that the compliance threshold can be audited component by component.
+  separately so that the conformance threshold can be audited component by component.
   Example:
     Component 1: Indicator 2 - Use of Approved Open License
     Component 2: Indicator 3 - Clear Ownership (if applicable to this criterion)]
@@ -419,7 +419,7 @@ Response form: [Pass / Fail / Override-documented]
 
 Evidence form: [Pass / Fail / Override-documented]
 
-Compliance threshold: [Pass / Fail / Override-documented / N/A]
+Conformance threshold: [Pass / Fail / Override-documented / N/A]
   [Mark N/A if this field does not reference an external standard.]
 
 Data quality notes: [Record any Validity, Integrity, or Precision flags raised
@@ -473,7 +473,7 @@ Unresolved failures (if Not certified): [List each field with an unresolved
   failure and the specific requirement that failed. Example:
   - Field "Community Reach": Operational definition - Fail. No option definitions
     provided for single-select field.
-  - Field "Open License": Compliance threshold - Fail. References DPG Standard
+  - Field "Open License": Conformance threshold - Fail. References DPG Standard
     without enumerating applicable indicators or minimum threshold.]
 
 Certification expiry: [Date of next required re-audit. Re-audit is required at
@@ -628,13 +628,13 @@ Named revenue sources: [list all active revenue sources, including grants, servi
 [If Commercial or Hybrid]: Additionality boundary: [specify what this grant funds that commercial revenue does not]
 
 **Disbursement Authority Declaration**
-Authority state (select one): [ ] Individual [ ] Governed [ ] Delegated
+Authority state (select one): [ ] Individual [ ] Collective [ ] Delegated
 [If Individual]: Full legal name of authority holder: ___
-[If Governed]: Mechanism name: ___ | Multisig or governance contract address: ___ | Current key holders: ___ | Quorum threshold: ___
+[If Collective]: Mechanism name: ___ | Multisig or governance contract address: ___ | Current key holders: ___ | Quorum threshold: ___
 [If Delegated]: Receiving entity: ___ | Deploying entity: ___ | Delegation terms: ___ | Documentation: ___
 
-**Governance Resilience Declaration**
-Resilience state (select one): [ ] Single [ ] Partial [ ] Resilient
+**Continuity Capacity Declaration**
+Continuity state (select one): [ ] Single [ ] Partial [ ] Resilient
 Named primary contributor: ___
 [If Single or Partial]: Continuity explanation: [how would the project continue if the primary contributor were unavailable?]
 
@@ -658,6 +658,8 @@ Independent evidence: [name a verifiable external source that corroborates the d
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.4 | 2026-06-08 | Disbursement-authority Governed state renamed Collective in Template 6 (the "[If Collective]" sub-field branch), completing the Governed-to-Collective rename. The version stamps in the frontmatter and heading, which had lagged at 0.1.2 behind the 0.1.3 changelog entry, are corrected. No template content changed; naming only. |
+| 0.1.3 | 2026-05-23 | Primitive rename cascade applied. Template 6: the "Governance Resilience Declaration" sub-template is now the "Continuity Capacity Declaration"; the three-state vocabulary (Single, Partial, Resilient) and the named primary contributor and continuity explanation sub-fields are preserved. Historical changelog entry below retains the prior primitive name as it stood at the time of release. |
 | 0.1.2 | 2026-05-18 | Template 6 added: Gate Declaration Fields (Section 3.8). Covers revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, and development stage declarations with structured sub-fields for each state. |
 | 0.1.1 | 2026-05-17 | Template 5 added: Organizational Identity Declaration. Three-instrument template covering the legal entity instrument, display name instrument, and conditional prior entity relationship instrument, plus a self-reference consistency certification. Annotated field instructions for each element. |
 | 0.1.0 | 2026-05-15 | Initial draft. Four templates: Ideation Record (Stage 1), WALKRI Field Specification (Stage 2), Applicant Guidance Document (Stage 3), and WALKRI Audit Report. |
