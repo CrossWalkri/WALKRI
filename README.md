@@ -1,6 +1,6 @@
 # WALKRI: Working Architecture for Legible, Knowable, Reliable Instrumentation
 
-Version 0.1.7 | 2026-05-19 | CC0
+Version 0.1.8 | 2026-06-13 | CC0
 
 **Two standards. One problem.**
 
@@ -14,7 +14,7 @@ WALKRI is a companion standard to CROSS (Common Reporting Outcome Standards Sche
 
 Across the 95+ frameworks documented in the CROSS+WALKRI compatibility corpus, a consistent pattern emerges: data quality problems in grant programs trace to specification decisions made before the first application was submitted. Form field design is where the obligation architecture meets the applicant. A round that correctly specifies what grantees must demonstrate produces nothing usable if the fields that collect that demonstration are labels rather than instruments. WALKRI addresses this at the surface where it is most consequential and most consistently neglected: the individual field, before anyone answers it.
 
-Round design and form field design are governance. They determine who can legibly apply, what kinds of work get selected, whose theory of change is rewarded, and whether the data produced can ever be compared, aggregated, or trusted. A funder who treats these as administrative overhead is making governance decisions without acknowledging that governance decisions are being made. The field that does not specify what it measures is not neutral. It transfers interpretive power to whoever scores it, invisibly, after submission.
+Round design and form field design allocate decision standing. They determine who can legibly apply, what kinds of work get selected, whose theory of change is rewarded, and whether the data produced can ever be compared, aggregated, or trusted. A funder who treats these as administrative overhead is making decision-standing choices without acknowledging that decision-standing choices are being made. The field that does not specify what it measures is not neutral. It transfers interpretive power to whoever scores it, invisibly, after submission.
 
 ---
 
@@ -48,11 +48,11 @@ Five requirements apply to every intake field before any applicant sees it.
 
 **Evidence form:** The field must identify the specific artifact type and access path required to answer it. Not "evidence of open source status" but "a URL to the LICENSE file in the root directory of a publicly accessible repository." The evidence form structurally separates what counts as evidence from who benefits from favorable assessment.
 
-**Conformance threshold:** For fields referencing external standards (a DPG Standard, ISO certification, a regulatory requirement), the field must enumerate which components of the standard apply and what minimum passage level constitutes compliance.
+**Conformance threshold:** For fields referencing external standards (a DPG Standard, ISO certification, a regulatory requirement), the field must enumerate which components of the standard apply and what minimum passage level constitutes conformance.
 
 A field that satisfies all five is a measurement instrument. A field that fails any one is a label. The distinction is structural, not a matter of degree.
 
-WALKRI also specifies five gate declaration instruments that apply at the program level, before individual fields are designed: the Obligation Mode Declaration, the Evidence Standard Declaration, the Comparison Frame Declaration, the Attribution Claim Declaration, and the Sufficiency Assessment Declaration. These establish the accountability context that field design must satisfy.
+WALKRI also specifies five gate declaration instruments that apply at the program level, before individual fields are designed: the Obligation Mode Declaration, the Evidence Standard Declaration, the Comparison Frame Declaration, the Attribution Claim Declaration, and the Sufficiency Assessment Declaration. These establish the obligation context that field design must satisfy.
 
 ---
 
@@ -72,7 +72,7 @@ Field quality at the specification stage compounds upward through every layer of
 
 **Platform providers** gain ecosystem-wide data comparability from a single conformance requirement. Every program running on a WALKRI-conformant platform produces data that is structurally comparable to every other program, regardless of what the programs fund, how they select, or which indicators they use.
 
-**Institutional funders** receive data quality as a structural output of the round being run correctly, not as a separate compliance exercise. USAID data quality criteria, OECD DAC evaluation standards, IRIS+ metadata requirements, and FAIR data principles are all satisfied as consequences of conformance. The same applies in the Web3 ecosystem: DAOIP-5-compatible grant data, EAS-attestable field specifications, and OpenGrants-compatible structured output are all products of the same conformant specification.
+**Institutional funders** receive data quality as a structural output of the round being run correctly, not as a separate conformance exercise. USAID data quality criteria, OECD DAC evaluation standards, IRIS+ metadata requirements, and FAIR data principles are all satisfied as consequences of conformance. The same applies in the Web3 ecosystem: DAOIP-5-compatible grant data, EAS-attestable field specifications, and OpenGrants-compatible structured output are all products of the same conformant specification.
 
 ---
 
@@ -126,7 +126,7 @@ Every tool either collects data after fields are defined, tracks outcomes after 
 
 ## Institutional alignment
 
-WALKRI's five requirements encode the same underlying measurement quality principles that dozens of institutional frameworks require, applied at specification time rather than assessed retrospectively. A WALKRI-conformant intake form produces data quality compliance across all of the following frameworks as a structural byproduct of correctly specifying its fields before publication.
+WALKRI's five requirements encode the same underlying measurement quality principles that dozens of institutional frameworks require, applied at specification time rather than assessed retrospectively. A WALKRI-conformant intake form produces data quality conformance across all of the following frameworks as a structural byproduct of correctly specifying its fields before publication.
 
 **USAID data quality criteria** (Validity, Reliability, Precision, Integrity, Timeliness) map directly to WALKRI's five requirements. USAID applies these as a Data Quality Assessment procedure after data is collected. WALKRI applies them at the field specification stage, before any applicant sees the form. A WALKRI-conformant field satisfies the USAID DQA without a separate assessment.
 
@@ -220,3 +220,11 @@ Source and full documentation: github.com/CrossWalkri/tools
 CC0: dedicated to the public domain under Creative Commons Zero v1.0 Universal. See `LICENSE` for the full dedication.
 
 Any grants ecosystem can adopt WALKRI without adopting CROSS, the Coordination Structural Integrity Suite, or any other standard. The five field requirements and gate declaration instruments stand alone.
+
+---
+
+## Changelog
+
+| Version | Date | Summary |
+|---|---|---|
+| 0.1.8 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: the rhetorical claim "Round design and form field design are governance ... making governance decisions" recast to "allocate decision standing ... making decision-standing choices", preserving the argument in Frame 2; own-voice "compliance" recast to "conformance" (the conformance-threshold sentence "constitutes conformance"; "not as a separate conformance exercise"; "produces data quality conformance across all of the following frameworks"); "the accountability context that field design must satisfy" recast to "the obligation context". Kept as admissible: "transparency" where it names an SROI principle and the SROI principles sentence (citation use of the source framework's term); "Accountability framework" (Core Humanitarian Standard) and the layer descriptors "Compliance framework" (USAID PIRS) and "Standards governance" (ISEAL) as contextual description of those external tools' own category, flagged for author review. No mapping-table cell, framework claim, conformance threshold, or field changed; vocabulary only. |

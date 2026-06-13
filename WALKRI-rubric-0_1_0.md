@@ -1,14 +1,14 @@
 ---
 title: WALKRI Assessment Rubric
-version: 0.1.4
-date: 2026-06-08
+version: 0.1.6
+date: 2026-06-13
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Assessment Rubric
 
-Version 0.1.4 | 2026-06-08 | CC0
+Version 0.1.6 | 2026-06-13 | CC0
 
 ---
 
@@ -94,7 +94,7 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 
 **Override Condition:** For qualitative or narrative fields where no artifact-based evidence is structurally possible, the auditor documents the verification method in lieu of an evidence form. The documentation must name the assessment criteria reviewers apply, the minimum threshold for a passing reviewer assessment, and whether the assessment is conducted by one or multiple reviewers. This override converts a nominally absent evidence form into a documented verification methodology. It is not a waiver of the verification requirement; it is a documented alternative implementation.
 
-**Status:** Blocking for fields configured at third-party verifiable strength or above, as classified in the field specification. Advisory for fields configured at self-report level, where the absence of an independent artifact is an acknowledged design condition rather than an oversight.
+**Status:** Blocking for fields configured at third-party verifiable strength or above, as classified in the field specification. Advisory for fields configured at self-report level, where the absence of an independent artifact is an acknowledged design condition rather than an omission.
 
 ---
 
@@ -113,6 +113,23 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 
 ---
 
+### 2.6 Instrument Dependency Declaration (Section 3.9)
+
+The five requirements above assess each instrument as a node. This requirement assesses the edges between instruments. It is a form-level (instrument-set-level) check, not a single-instrument check: the auditor assesses the dependency graph of the whole instrument set, then confirms that each instrument carries its own dependency value within that graph. A form field is the form-modality instantiation of an instrument; this requirement reads the conditional, branching, and ordering logic the instrument set carries in whatever modality it is expressed.
+
+**Assessment Question:** Is the instrument set's dependency graph derived from the set's own formal logic, attested by the designer, and recorded in the conformance record, with every instrument carrying either its derived dependency edges or the Declared-Absent value (independent) where it has none?
+
+| Outcome | Description |
+|---|---|
+| Pass | The dependency graph is present and was derived from the instrument set's own formal logic (in JSON Schema native form, the conditional keywords; in the secondary formats, the equivalent edge logic read out per the interface specification), not separately author-written. For each instrument, the graph records its activation conditions, its assessment dependencies (what must resolve before its conformance threshold can be assessed), its ordering constraints, and its cross-instrument consistency constraints. Each instrument that carries no edges declares the Declared-Absent value (independent). The designer has attested to the derived graph, and the graph is recorded in the conformance record. An auditor can regenerate the graph from the specification and reach the attested result. |
+| Fail | A form carries conditional, branching, or ordering logic (for example, a field that appears only when an upstream response takes a given value, or a field whose threshold cannot be assessed until another field resolves) that is not derived, attested, and recorded. An instrument with edges that is left marked independent is a Fail. A separately author-written dependency declaration that does not match the logic the instrument set actually carries is a Fail, because the recorded graph and the live logic have diverged, which is the condition this requirement exists to prevent. |
+
+**Override Condition:** Per the standard override convention in Part 5 of this rubric. The available override is narrow: where the form-rendering format cannot express an edge that the design requires (a platform limitation), the auditor records the edge in the dependency declaration as a manually attested edge, names the platform and the specific limitation, and documents the compensating control that holds the edge in practice. As with the response-form platform override (2.3), a general claim that "the platform does not support it" without specificity does not authorize the override. There is no override for omitting the graph itself: a form that carries conditional or ordering logic must carry a dependency declaration that accounts for it.
+
+**Status:** Blocking for any instrument set that carries conditional, branching, or ordering logic. For an instrument set with no edges, the requirement is satisfied by each instrument carrying the Declared-Absent value (independent); a single-instrument set or a set of fully independent instruments pays almost nothing here. The requirement is never not-applicable, because the explicit independent finding is itself the conformant record for a form with no edges.
+
+---
+
 ### Part 2 Summary Table
 
 | Requirement | Assessment Question | Fail Threshold | Override Available | Status |
@@ -122,6 +139,7 @@ Edge case determination is advisory when the field has low ambiguity by design, 
 | Response form | Is the form named and justified? | Form absent or unjustified | Yes, for platform constraint on preferred form | Blocking (form name); Advisory (justification) |
 | Evidence form | Does it name a specific verifiable artifact? | Absent or delegates to reviewer judgment | Yes, for qualitative fields; documented verification method required | Blocking (third-party verifiable fields); Advisory (self-report fields) |
 | Conformance threshold | Are components, evidence, and threshold specified per external standard? | Any element absent when external standard referenced | Yes, for binary-only standards | Blocking (when external standard referenced) |
+| Instrument dependency declaration | Is the dependency graph derived, attested, and recorded, with independent instruments marked Declared-Absent? | Conditional, branching, or ordering logic present but not derived, attested, and recorded | Yes, for an edge a platform cannot express (manual attested edge, named limitation, compensating control) | Blocking (when the instrument set carries edges); satisfied by the independent value when it carries none |
 
 ---
 
@@ -193,6 +211,8 @@ No Integrity findings at third-party verifiable strength or above. A field confi
 
 Conformance threshold is specified for every external standard referenced across all fields in the form. A referenced external standard without a conformance threshold is a blocking failure under 2.5.
 
+The instrument set's dependency declaration is present and conformant under 2.6: the dependency graph is derived from the instrument set's own formal logic, attested by the designer, and recorded, with every instrument carrying its derived edges or the Declared-Absent value (independent). A form that carries conditional, branching, or ordering logic without a derived, attested, and recorded dependency graph is a blocking failure under 2.6.
+
 A form certified at Standard level is suitable for human-reviewed evaluation. Reviewers can apply the field specifications consistently, and the resulting data is attributable to real differences in the applicant population rather than to definitional ambiguity.
 
 ### WALKRI Certification (Enhanced)
@@ -223,7 +243,7 @@ Override documentation must contain four elements. If any element is absent, the
 
 **The compensating control or alternative approach taken.** State what has been done in lieu of meeting the requirement. The compensating control must address the same risk that the requirement was designed to address. An override with no compensating control is a documented gap, not a documented conformance choice; it may be recorded as such but does not achieve the same conformance status.
 
-**The name or role of the person or organization making the override decision.** The override is a decision, and decisions have authors. An override without an identified decision-maker cannot be held accountable and is treated as unsigned.
+**The name or role of the person or organization making the override decision.** The override is a decision, and decisions have authors. An override without an identified decision-maker cannot be held answerable and is treated as unsigned.
 
 Overrides are part of the conformance record and are visible to every party that receives the conformance record. A certifying organization that grants overrides liberally will produce a conformance record that reflects that pattern. Downstream data consumers and external auditors can assess the quality of a form's certification by reviewing the override record alongside the pass/fail record.
 
@@ -243,12 +263,12 @@ Identity instrument assessment applies only to programs using CROSS entry gates 
 
 | Outcome | Description |
 |---|---|
-| Pass | The criterion intent specifies that the field identifies the legal person or registered organization accountable for grant obligations. The operational definition includes: inclusion criteria requiring the name as it appears in the jurisdiction of registration, the jurisdiction itself, and a registration number or equivalent identifier where applicable. Exclusion criteria explicitly name the following as non-qualifying: project names, display names, brand names, GitHub organization names, and pseudonyms, unless any of these are also the applicant's legal name of record. |
+| Pass | The criterion intent specifies that the field identifies the legal person or registered organization answerable for grant obligations. The operational definition includes: inclusion criteria requiring the name as it appears in the jurisdiction of registration, the jurisdiction itself, and a registration number or equivalent identifier where applicable. Exclusion criteria explicitly name the following as non-qualifying: project names, display names, brand names, GitHub organization names, and pseudonyms, unless any of these are also the applicant's legal name of record. |
 | Fail | The criterion intent does not distinguish legal name from display name. The operational definition lacks explicit exclusion of non-legal identifiers. The field can be satisfied by a project name or brand name without requiring evidence that the name corresponds to a registered entity. |
 
-**Override Condition:** Where no legal entity exists (individual applicants with no legal registration), the operational definition may be modified to require the individual's full legal name and a statement that no legal entity exists. The override must document what accountability mechanism substitutes for entity registration.
+**Override Condition:** Where no legal entity exists (individual applicants with no legal registration), the operational definition may be modified to require the individual's full legal name and a statement that no legal entity exists. The override must document what answerability mechanism substitutes for entity registration.
 
-**Status:** Blocking. A legal entity field that does not distinguish legal identity from display identity is structurally unable to establish the accountability chain that continuation and redress provisions require.
+**Status:** Blocking. A legal entity field that does not distinguish legal identity from display identity is structurally unable to establish the answerability chain that continuation and redress provisions require.
 
 ---
 
@@ -378,6 +398,8 @@ These assessment questions apply when evaluating field specifications that imple
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.6 | 2026-06-13 | Section 3.9 reflection. New criterion 2.6 (Instrument Dependency Declaration) added to Part 2 with pass/fail/override logic in the same structure as the five criterion-element assessments: Pass where the instrument set's dependency graph is derived from the set's own formal logic, attested by the designer, and recorded, with independent instruments carrying the Declared-Absent value; Fail where conditional, branching, or ordering logic is present but not derived, attested, and recorded, or where a separately author-written declaration has diverged from the live logic; Override narrow to a platform that cannot express a required edge (manual attested edge, named limitation, compensating control). Part 2 summary table gains the matching row. Standard certification thresholds gain the 2.6 condition. Light instrument-framing note that a form field is the form-modality instantiation of an instrument; the five criterion-element assessments are unchanged. | 
+| 0.1.5 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: own-voice "oversight" recast to "omission" (the error sense in the Evidence Form status line, where neither the monitoring nor supervisory sense applies); "accountable/accountability" recast to "answerable/answerability" in own-voice property and structure uses (an override cannot be held answerable; the legal entity instrument identifies the party answerable for grant obligations; the answerability mechanism substituting for entity registration; the answerability chain that continuation and redress require). Kept as admissible: "under whose resources, governance, or employment" as the named organizational-context sense of the prior entity relationship instrument; the named technical concepts "governance contract address" and "governance mechanism" (on-chain); the historical changelog records naming the prior Governance Resilience primitive. No assessment question, status, threshold, or mapping changed; vocabulary only. |
 | 0.1.4 | 2026-06-08 | Disbursement-authority Governed state renamed Collective (the "For Collective state" assessment guidance), completing the Governed-to-Collective rename. The version stamps in the frontmatter and heading, which had lagged at 0.1.2 behind the 0.1.3 changelog entry, are corrected. No assessment content changed; naming only. |
 | 0.1.3 | 2026-05-23 | Primitive rename cascade applied. The "Governance Resilience Instrument Assessment" section is now the "Continuity Capacity Instrument Assessment". Question 4 updated to reference "Single continuity capacity" as a risk factor. The three-state vocabulary (Single, Partial, Resilient) is preserved. Historical changelog entry below retains the prior primitive name as it stood at the time of release. |
 | 0.1.2 | 2026-05-18 | Section 3.8 assessment questions added: five instrument rubrics covering revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, and development stage. Five questions per instrument following the criterion specification element assessment structure. |

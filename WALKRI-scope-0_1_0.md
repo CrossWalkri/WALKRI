@@ -1,7 +1,7 @@
 ---
 title: WALKRI - Working Architecture for Legible Knowledge Intake
-version: 0.1.0
-date: 2026-05-15
+version: 0.1.1
+date: 2026-06-13
 status: Scope document. Pre-draft. Not yet a specification.
 companion_standard: CROSS v0.3.7 (github.com/durgadasji/CROSS)
 brand: CROSS+WALKRI
@@ -10,7 +10,7 @@ license: CC0 (intended)
 
 # WALKRI - Working Architecture for Legible Knowledge Intake
 
-Scope Document, version 0.1.0 | 2026-05-15
+Scope Document, version 0.1.1 | 2026-06-13
 
 ---
 
@@ -28,7 +28,7 @@ What WALKRI adds is a quality gate applied before a form is published, and an en
 
 CROSS (Common Reporting Outcome Standards Schema) and WALKRI operate at different layers of the same infrastructure stack, and each layer has a distinct function.
 
-CROSS operates at the conceptual and protocol layer. It specifies what funded interventions must demonstrate, how funders configure gate criteria for their programs, and how grantees report results against those criteria. CROSS defines the world model: what counts as a valid entry specification, what accountability mode a round is configured for, what constitutes a change indicator versus a deliverable specification, and what evidence is required at each gate. CROSS says what the categories are and what the rules of evidence are.
+CROSS operates at the conceptual and protocol layer. It specifies what funded interventions must demonstrate, how funders configure gate criteria for their programs, and how grantees report results against those criteria. CROSS defines the world model: what counts as a valid entry specification, what obligation mode a round is configured for, what constitutes a change indicator versus a deliverable specification, and what evidence is required at each gate. CROSS says what the categories are and what the rules of evidence are.
 
 WALKRI operates at the instrumentation and collection layer. It specifies how to collect evidence about that world model without corrupting it on intake. When CROSS requires a funder to define a gate criterion, WALKRI specifies how that criterion must be encoded in a form field to be answerable at all. When CROSS requires an applicant to report against an indicator, WALKRI specifies what form that indicator's evidence field must take so that responses are interpretable and comparable. WALKRI does not change what CROSS requires; it operationalizes the collection of it.
 
@@ -44,7 +44,7 @@ WALKRI structures its process in three stages: ideation, specification, and appl
 
 The ideation stage addresses what a funder actually needs to know before any field is created. This sounds obvious and is routinely skipped. Funders typically begin by designing fields, which forces them to make definitional decisions implicitly and inconsistently. Ideation makes those decisions explicit first. What question is this field trying to answer? What would a good answer look like? What would a bad answer look like? What is the minimum evidence that would let a reviewer distinguish between them? What are the failure modes of this field: what can applicants answer that looks correct but is actually uninformative? The ideation stage produces a criterion intent document: a plain-language record of what each field is for, what it is not for, and what the funder commits to knowing before encoding the field.
 
-The specification stage encodes that intent as a precisely defined, validated field that meets WALKRI criterion specification requirements. A WALKRI-compliant field has five required elements: a criterion intent statement derived from the ideation stage, an operational definition with positive and negative examples, a justification for the response form chosen (why a dropdown versus a free-text field versus a number, and what that form can and cannot capture), an evidence form specification (what kind of evidence a valid response would contain), and a conformance threshold for any field that references an external standard. The specification stage produces a WALKRI schema: a set of field definitions in JSON Schema format that encodes all five elements as machine-readable metadata alongside the field validation rules.
+The specification stage encodes that intent as a precisely defined, validated field that meets WALKRI criterion specification requirements. A WALKRI-conformant field has five required elements: a criterion intent statement derived from the ideation stage, an operational definition with positive and negative examples, a justification for the response form chosen (why a dropdown versus a free-text field versus a number, and what that form can and cannot capture), an evidence form specification (what kind of evidence a valid response would contain), and a conformance threshold for any field that references an external standard. The specification stage produces a WALKRI schema: a set of field definitions in JSON Schema format that encodes all five elements as machine-readable metadata alongside the field validation rules.
 
 The applicant guidance stage translates the specification into language that helps applicants understand what good data looks like for each field. This is not marketing copy or instructions on how to fill out the form. It is a precision document: for each field, it states what the funder is trying to learn, gives a worked example of a response that would satisfy the criterion, gives a worked example of a response that would fail the criterion and why, and names the evidence the applicant should be drawing on. The applicant guidance stage produces a field-level guidance document that is published alongside the form.
 
@@ -78,7 +78,7 @@ The third element is response form justification: an explicit statement of why t
 
 The fourth element is evidence form specification: a description of what kind of evidence a valid response would draw on. For a field asking about prior grant funding, valid evidence might be a list with funder names, amounts, and dates. For a field asking about codebase activity, valid evidence might be a repository link with a specified lookback period. Naming the evidence form makes reviewer judgment consistent and tells applicants what to prepare.
 
-The fifth element is conformance threshold, required for any field that references an external standard or certification. If a field asks whether a project qualifies under an external framework, the field must specify which criteria of that framework apply, what evidence satisfies each, and what minimum threshold constitutes compliance. A checkbox labeled with the name of a standard, with no specification of what the checkbox means, fails this requirement.
+The fifth element is conformance threshold, required for any field that references an external standard or certification. If a field asks whether a project qualifies under an external framework, the field must specify which criteria of that framework apply, what evidence satisfies each, and what minimum threshold constitutes conformance. A checkbox labeled with the name of a standard, with no specification of what the checkbox means, fails this requirement.
 
 ---
 
@@ -94,13 +94,13 @@ WALKRI does not replace form tools. Programs using WALKRI still choose and opera
 
 WALKRI does not require any specific form platform. The JSON Schema and webhook architecture are supported by all major form tools. A program using Fillout can be WALKRI-certified. So can a program using Airtable, Typeform, Jotform, or a custom form built on a JSON Schema validator. The certification lives in the schema and the provenance record, not in the platform.
 
-WALKRI also does not substitute for CROSS where CROSS applies. WALKRI handles the instrumentation of data collection. The question of what accountability a funded intervention must demonstrate, what gate criteria apply, and how results are reported is CROSS's domain. When used together, CROSS configures the accountability structure and WALKRI enforces the data quality of the forms that collect evidence for it.
+WALKRI also does not substitute for CROSS where CROSS applies. WALKRI handles the instrumentation of data collection. The question of what answerability a funded intervention must demonstrate, what gate criteria apply, and how results are reported is CROSS's domain. When used together, CROSS configures the obligation structure and WALKRI specifies the data quality of the forms that collect evidence for it.
 
 ---
 
 ## 7. Scope of Version 0.1.0
 
-Version 0.1.0 of the WALKRI standard covers the specification layer: what a WALKRI-compliant field is, what a WALKRI-certified form is, how the three-stage process works, and what the technical architecture requires.
+Version 0.1.0 of the WALKRI standard covers the specification layer: what a WALKRI-conformant field is, what a WALKRI-certified form is, how the three-stage process works, and what the technical architecture requires.
 
 Specifically, version 0.1.0 defines the criterion specification requirements (the five required elements for every field), the three-stage process and the artifacts each stage produces, the JSON Schema output format and the metadata fields that carry criterion specification data, the webhook enrichment protocol and the provenance metadata fields it writes, and the certification record format that a WALKRI-certified schema must contain.
 
@@ -121,3 +121,11 @@ The second concerns versioning of certified schemas across a program's history. 
 The third concerns the verification of ideation stage outputs before proceeding to specification. The ideation stage produces a criterion intent document that is a prerequisite for specification. At present, the standard does not specify a review mechanism: who decides whether a criterion intent document is sufficient to proceed? Options include self-certification by the funder, peer review by another certified practitioner, or a structured checklist that the standard itself provides. The choice determines how much institutional overhead the process requires and how well it scales to smaller programs.
 
 The fourth concerns the relationship between WALKRI certification and the Croissant and FAIR downstream standards. WALKRI aligns with these standards but does not currently specify what minimum WALKRI conformance is required for a dataset to make a credible Croissant or FAIR claim. Drawing that line clearly would make the certification more legible to the research and machine learning communities WALKRI intends to serve, but it requires taking positions on those standards' interpretation that have not yet been worked through.
+
+---
+
+## Changelog
+
+| Version | Date | Summary |
+|---|---|---|
+| 0.1.1 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: "accountability mode" recast to "obligation mode" and "the accountability structure" to "the obligation structure", using CROSS's own canonical Part III vocabulary; own-voice "WALKRI-compliant field" recast to "WALKRI-conformant field" (both occurrences), aligning with the corpus's established "conformant" usage; "what minimum threshold constitutes compliance" recast to "constitutes conformance"; "what accountability a funded intervention must demonstrate" recast to "what answerability ... must demonstrate"; the verb "enforces" recast to "specifies" in "WALKRI specifies the data quality of the forms". No field, conformance threshold, or mapping changed; vocabulary only. |

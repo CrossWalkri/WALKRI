@@ -1,10 +1,10 @@
 ---
 title: WALKRI Runbooks
-version: 0.1.2
-date: 2026-05-18
+version: 0.1.4
+date: 2026-06-13
 license: CC0
-status: Working draft. Companion to WALKRI-standard-0_1_0.md (v0.1.4).
-parent_standard: WALKRI v0.1.4 (github.com/CrossWalkri/WALKRI)
+status: Working draft. Companion to WALKRI-standard-0_1_0.md (v0.2.0).
+parent_standard: WALKRI v0.2.0 (github.com/CrossWalkri/WALKRI)
 companion_cross_document: CROSS-runbooks-0_1_0.md
 ---
 
@@ -36,9 +36,9 @@ Context: A program funding an early-stage build with a specific deliverable. The
 
 **Legal entity or individual name** [Core]
 
-Criterion intent: Identify the natural person or registered organization accountable for delivering the grant obligations and receiving disbursement.
+Criterion intent: Identify the natural person or registered organization answerable for delivering the grant obligations and receiving disbursement.
 
-Operational definition: The name as it appears in the jurisdiction of registration for organizations, or the full legal name for individuals. A project name, display name, or GitHub organization name does not satisfy this field unless it is the legal name. Where no legal entity exists, the individual who assumes personal accountability for the obligation must be named explicitly.
+Operational definition: The name as it appears in the jurisdiction of registration for organizations, or the full legal name for individuals. A project name, display name, or GitHub organization name does not satisfy this field unless it is the legal name. Where no legal entity exists, the individual who assumes personal answerability for the obligation must be named explicitly.
 
 Response form: Short text. Justification: the legal name is a single, unambiguous string. Free prose is not appropriate because it permits aliases, display names, and partial names.
 
@@ -402,7 +402,7 @@ Status: Suggested
 
 Matching CROSS runbook: Institutional Conformance (change obligation, all gates at independent review, counterfactual reference required, IP ownership required).
 
-Context: Programs seeking institutional co-funding or satisfying USAID, OECD DAC, or comparable compliance requirements. Full PIRS-compatible field set. All fields audited to the highest evidence strength.
+Context: Programs seeking institutional co-funding or satisfying USAID, OECD DAC, or comparable conformance requirements. Full PIRS-compatible field set. All fields audited to the highest evidence strength.
 
 All Graduated Evidence Core fields apply. The following fields are added.
 
@@ -474,7 +474,7 @@ These three runbooks are not paired with a specific CROSS runbook. They are fiel
 
 ### 7. USAID PIRS
 
-Context: Programs required to produce USAID Performance Indicator Reference Sheet (PIRS) documentation for each indicator. USAID ADS 201 requires nine elements per indicator. The fields in this runbook correspond to those nine elements. A program using this runbook as their intake field set produces PIRS-compliant indicator documentation without additional work.
+Context: Programs required to produce USAID Performance Indicator Reference Sheet (PIRS) documentation for each indicator. USAID ADS 201 requires nine elements per indicator. The fields in this runbook correspond to those nine elements. A program using this runbook as their intake field set produces PIRS-conformant indicator documentation without additional work.
 
 ---
 
@@ -482,7 +482,7 @@ Context: Programs required to produce USAID Performance Indicator Reference Shee
 
 Required at all entry gates. Applicant classifies revenue architecture as grant-only, fee-for-service, commercial, or hybrid. Commercial and hybrid types require an additionality boundary statement specifying what this grant funds that commercial revenue does not. Activates concurrent funding disclosure review for commercial and hybrid types. [CROSS v0.3.6, Part II, Revenue Architecture; WALKRI Section 3.8]
 
-Note for USAID PIRS context: Development stage declarations in USAID-aligned programs should map to the USAID program cycle stages where applicable. Revenue architecture of commercial or hybrid type may affect USAID co-financing rules and should be flagged for compliance review.
+Note for USAID PIRS context: Development stage declarations in USAID-aligned programs should map to the USAID program cycle stages where applicable. Revenue architecture of commercial or hybrid type may affect USAID co-financing rules and should be flagged for conformance review.
 
 Status: Core
 
@@ -492,7 +492,7 @@ Status: Core
 
 Required at all entry gates. Applicant classifies development stage as Stage 1 (proof of concept) through Stage 5 (retroactive recognition). Declaration must include an explanation and at least one piece of independently verifiable evidence consistent with the declared stage. Stage declarations inconsistent with the obligation mode committed to require explanation. [CROSS v0.3.6, Part IV; WALKRI Section 3.8]
 
-Note for USAID PIRS context: Development stage declarations in USAID-aligned programs should map to the USAID program cycle stages where applicable. Revenue architecture of commercial or hybrid type may affect USAID co-financing rules and should be flagged for compliance review.
+Note for USAID PIRS context: Development stage declarations in USAID-aligned programs should map to the USAID program cycle stages where applicable. Revenue architecture of commercial or hybrid type may affect USAID co-financing rules and should be flagged for conformance review.
 
 Status: Core
 
@@ -738,7 +738,7 @@ Status: Core
 
 Context: Programs requiring Digital Public Good qualification as a gate criterion. This runbook provides pre-audited field specifications for assessing all nine DPG Standard indicators (github.com/DPGAlliance/DPG-Standard, tag v1.1.7) with explicit conformance thresholds for each.
 
-Registry note: the DPGA registry records past assessments at the time of registration, not current qualification status. Registry membership accepted as evidence at the time of registration does not constitute evidence of current compliance with each indicator. The conformance threshold for each indicator below specifies whether registry membership is accepted as sufficient evidence or whether independent indicator assessment is required regardless of registry status. Programs should assume independent indicator assessment is required unless the threshold note explicitly accepts registry membership.
+Registry note: the DPGA registry records past assessments at the time of registration, not current qualification status. Registry membership accepted as evidence at the time of registration does not constitute evidence of current conformance with each indicator. The conformance threshold for each indicator below specifies whether registry membership is accepted as sufficient evidence or whether independent indicator assessment is required regardless of registry status. Programs should assume independent indicator assessment is required unless the threshold note explicitly accepts registry membership.
 
 ---
 
@@ -784,7 +784,7 @@ Criterion intent: Confirm that the digital public good is released under a named
 
 Operational definition: A named SPDX license identifier (any OSI-approved open source license for software; any Creative Commons license except NC or ND variants for content; ODbL or equivalent for data) applied to the digital good and present in the repository or published artifact. The license must be in the LICENSE file or package manifest, not only in project documentation. A reference to being "open source" without a named SPDX identifier does not satisfy this field.
 
-Response form: Single-select SPDX identifier plus the URL of the LICENSE file. Justification: the license is a named standard; free text permits non-compliant licenses to be represented as compliant.
+Response form: Single-select SPDX identifier plus the URL of the LICENSE file. Justification: the license is a named standard; free text permits non-conformant licenses to be represented as conformant.
 
 Evidence form: The SPDX identifier resolves to an OSI-approved license (for software) or a Creative Commons license without NC or ND restrictions (for content). The LICENSE file exists at the named URL.
 
@@ -862,13 +862,13 @@ Status: Core
 
 Criterion intent: Confirm that the digital public good's design and operation are consistent with applicable privacy laws in the jurisdictions where it is deployed, and that the project has assessed and addressed the relevant legal requirements.
 
-Operational definition: A statement covering: the jurisdictions in which the digital good is designed to be deployed; the privacy laws applicable in those jurisdictions that the project has assessed (e.g. GDPR, COPPA, LGPD, PDPA); the mechanism by which the digital good satisfies those requirements; and whether a privacy impact assessment has been conducted. A claim of legal compliance without naming the applicable laws and the mechanism of compliance does not satisfy this field.
+Operational definition: A statement covering: the jurisdictions in which the digital good is designed to be deployed; the privacy laws applicable in those jurisdictions that the project has assessed (e.g. GDPR, COPPA, LGPD, PDPA); the mechanism by which the digital good satisfies those requirements; and whether a privacy impact assessment has been conducted. A claim of legal conformance without naming the applicable laws and the mechanism of conformance does not satisfy this field.
 
-Response form: Long text. Justification: legal compliance requirements vary by jurisdiction and application type; structured fields cannot capture this without losing necessary specificity.
+Response form: Long text. Justification: legal conformance requirements vary by jurisdiction and application type; structured fields cannot capture this without losing necessary specificity.
 
-Evidence form: Named laws are verifiable legal standards in the stated jurisdictions. The compliance mechanism is internally consistent with the digital good's architecture. A privacy impact assessment, if cited, is accessible.
+Evidence form: Named laws are verifiable legal standards in the stated jurisdictions. The conformance mechanism is internally consistent with the digital good's architecture. A privacy impact assessment, if cited, is accessible.
 
-Conformance threshold: Registry membership is not accepted as evidence of current legal compliance. Applicable law changes after registration require independent reassessment.
+Conformance threshold: Registry membership is not accepted as evidence of current legal conformance. Applicable law changes after registration require independent reassessment.
 
 Status: Core
 
@@ -910,6 +910,8 @@ Status: Core
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.4 | 2026-06-13 | Parent-standard re-point. The parent standard pin and the status line companion reference are updated from WALKRI v0.1.4 to WALKRI v0.2.0, following the WALKRI reconception (the instrument is the unit of specification, instrument dependency declaration in Section 3.9, and Part XI). The five criterion elements and the five data-quality standards are unchanged, so no field specification in any runbook changed; the Section 3.8 instrument references remain current. Pin and reference only. |
+| 0.1.3 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: "accountable/accountability (of the legal party)" recast to "answerable/answerability" in the Discovery Sprint legal entity field criterion intent and the personal-answerability clause; own-voice "compliance/compliant" recast to "conformance/conformant" (the Institutional Conformance context line "comparable conformance requirements"; "PIRS-conformant indicator documentation"; the USAID context note "flagged for conformance review", both occurrences; the DPGA registry note "current conformance with each indicator"; the open-license justification "non-conformant licenses ... represented as conformant"; the DPG Indicator 7 privacy block "legal conformance", "mechanism of conformance", "conformance mechanism", and "current legal conformance"). Kept as admissible: "institutional accountability frameworks" as the contextual descriptor of the external framework class (USAID, OECD DAC); "government-issued ID" (government-as-party); the named document types "governance documentation" and "data governance policy" (shown as example options); all named external standards (USAID PIRS, OECD DAC, DPG Standard) and indicator names. No field, conformance threshold, or mapping changed; vocabulary only. |
 | 0.1.2 | 2026-05-18 | Revenue architecture declaration and development stage declaration added as Core fields to all remaining runbooks: Community Allocation, Retroactive Impact, Graduated Evidence, Institutional Conformance, USAID PIRS, OECD DAC, and DPG Standard. Context notes added for each institutional framework runbook. |
 | 0.1.1 | 2026-05-18 | Discovery Sprint and Staged Development runbooks updated. Revenue architecture declaration and development stage declaration added as Core fields to both runbooks, derived from WALKRI Section 3.8 instruments. Both fields are now universal requirements in CROSS-conformant programs. Stage notes for each runbook specify the expected stage declarations and flag stage-round misalignment cases. |
 | 0.1.0 | 2026-05-18 | Initial release. Six CROSS-paired runbooks (Discovery Sprint, Staged Development, Community Allocation, Retroactive Impact, Graduated Evidence, Institutional Conformance). Three institutional framework runbooks (USAID PIRS, OECD DAC, DPG Standard). Core/Suggested/Optional field status taxonomy. |

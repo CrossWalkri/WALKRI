@@ -1,9 +1,9 @@
 ---
 title: WALKRI - Working Architecture for Legible, Knowable, Reliable Instrumentation
-version: 0.1.9
-date: 2026-06-08
+version: 0.2.0
+date: 2026-06-13
 license: CC0
-status: Working draft. Initial specification.
+status: Working draft. Reconception landed in v0.2.0: the instrument is the unit of specification (form field as one instantiation), instrument dependency declaration is required (derive-and-attest), and the standard declares its own inheritance and position (Part XI). The filename stem 0_1_0 is the stable series identifier for the WALKRI suite; the version above is authoritative.
 companion_standard: CROSS (github.com/CrossWalkri/CROSS)
 brand: CROSS+WALKRI
 related_documents:
@@ -19,7 +19,7 @@ companion_documents:
 
 # WALKRI - Working Architecture for Legible, Knowable, Reliable Instrumentation
 
-Version 0.1.9 | 2026-06-08 | CC0
+Version 0.2.0 | 2026-06-13 | CC0
 
 ---
 
@@ -28,6 +28,12 @@ Version 0.1.9 | 2026-06-08 | CC0
 WALKRI (Working Architecture for Legible, Knowable, Reliable Instrumentation) is a standard for epistemic quality at the point of data capture. It specifies how fields and criteria used to collect structured information must be defined, so that the resulting data is valid, consistent, provenance-aware, and reusable by both humans and automated systems.
 
 **Format agnosticism.** WALKRI specifies what field definitions must contain, not what format they must use. Any tool, platform, or infrastructure that satisfies the content requirements of this standard is conformant. WALKRI is designed to be compatible with many data formats and ecosystems. Where this standard references a specific format, protocol, or system as an example of how its requirements can be satisfied, that reference is illustrative, not prescriptive. The compatibility statements published alongside this standard show how WALKRI content maps to specific formats and systems; those mappings do not obligate any program to adopt those formats or systems. A program implementing WALKRI through its own internal systems, a commercial form platform, a research data infrastructure, or any other tool is equally conformant provided the content requirements are met.
+
+### The Unit of Specification: The Instrument
+
+WALKRI's unit of specification is the instrument: the structured device through which one piece of information is captured. A form field is one instantiation of an instrument. So are a prompt constraint given to a language model, an element of a structured-output schema, a rubric item a reviewer applies, and an extraction specification run over a document. These are named renderings of the same underlying thing in different modalities, and the precision an instrument requires does not change when the modality does.
+
+This is a deliberate scoping choice. The form field is not the definition of WALKRI's subject; it is one named instantiation of it. The five specification requirements in Part III attach to the instrument, and a form field satisfies them as the form-modality rendering of an instrument. Where this standard says "field," it names the form-modality instantiation for readability, and the requirement it states applies to an instrument in any modality. This is what makes "Instrumentation" in the standard's name literal: WALKRI specifies instruments, of which form fields are the most familiar but not the only kind.
 
 ### The Problem
 
@@ -99,7 +105,7 @@ The detailed alignment specifications for all targets are in WALKRI-interface-sp
 
 ## Part III: Field Specification Requirements
 
-A WALKRI-conformant field must satisfy five criterion specification requirements. These requirements apply to funders specifying gate criteria, researchers designing survey fields, organizations building intake forms, and any other entity using WALKRI to govern data collection. A field that does not satisfy all five requirements is not WALKRI-conformant, regardless of its label or where it appears in a form.
+A WALKRI-conformant instrument must satisfy five criterion specification requirements. These requirements apply to funders specifying gate criteria, researchers designing survey fields, organizations building intake forms, and any other entity using WALKRI to structure data collection. The requirements are stated below in their form-field instantiation because that is the most familiar one; per Part I, they attach to the instrument, and a prompt constraint, a structured-output schema element, a rubric item, or an extraction specification satisfies them as the rendering of an instrument in its own modality. A field that does not satisfy all five requirements is not WALKRI-conformant, regardless of its label or where it appears in a form.
 
 The five requirements are: criterion intent, operational definition, response form, evidence form, and conformance threshold.
 
@@ -233,6 +239,22 @@ This section provides the WALKRI instrument type specifications for each of the 
 
 ---
 
+### 3.9 Instrument Dependency Declaration
+
+The five criterion specification requirements specify an instrument as a node: what it measures, how its responses are defined, its response form, its evidence, and its conformance threshold. They do not specify how instruments relate to each other. An instrument set carries edges as well as nodes: an instrument may be activated or hidden by an upstream response, its conformance threshold may not be assessable until another instrument resolves, and instruments may be subject to ordering or cross-instrument consistency constraints. A WALKRI certification that assesses only the nodes leaves these edges unassessed, so a certified form can contain conditional logic the certification never examined.
+
+**What It Requires:** For a form or instrument set to be WALKRI-conformant, its dependency graph must be certified alongside its instruments. The dependency graph names, for each instrument: its activation conditions (what upstream response makes it appear or apply), its assessment dependencies (what must resolve before its conformance threshold can be assessed), its ordering constraints, and its cross-instrument consistency constraints.
+
+**Derive, Do Not Re-Author:** The dependency graph is not a separate author-written declaration. An author-written declaration duplicates logic the instrument set already carries, and the duplicate drifts from the live logic, reintroducing the unassessed divergence the requirement exists to prevent. Instead, the graph is derived mechanically from the instrument set's own formal logic. WALKRI is JSON Schema native and the conditional keywords are formal; the form-rendering formats carry the same edge logic natively, and the read-out for each is specified in WALKRI-interface-specification-0_1_0.md. The designer performs a per-instrument trigger evaluation, records an explicit finding for each instrument including the explicit none finding where an instrument has no dependencies, and attests to the derived graph. The attestation is over an artifact an auditor can regenerate from the specification, so there is one source of truth rather than two that can diverge.
+
+**Declared-Absent for Independent Instruments:** An instrument with no dependency edges declares this in one word (independent), using the Declared-Absent convention, so a shallow form with no conditional logic pays almost nothing while a form with branching logic carries its full graph. What is certified is the instrument set together with its derived and attested dependency graph.
+
+**Why It Is Required:** A criterion specification that is precise at every node can still produce non-comparable data if the path through the instruments is unspecified. The edge structure determines what any given respondent actually encounters and is assessed on; leaving it uncertified leaves a soundness hole at the form level that the node-level requirements cannot close.
+
+**Failure Mode When Absent:** A form passes certification on its nodes while carrying skip logic, branching, and ordering constraints that determine what any given applicant actually sees and is assessed on. Two applicants traverse different paths through the same certified form, the path structure was never assessed, and the resulting data mixes responses produced under different effective instruments under a single field label.
+
+---
+
 ## Part IV: The Three-Stage Process
 
 WALKRI specifies a three-stage process for producing WALKRI-conformant fields. The stages may be traversed by a funder designing new fields, an auditor reviewing existing fields, or an AI assistant guiding either. All three stages are required for WALKRI certification. A form produced by skipping Stage 1 or Stage 3 may appear complete, but it fails the conditions that make the field work in practice.
@@ -244,6 +266,8 @@ WALKRI specifies a three-stage process for producing WALKRI-conformant fields. T
 **Who Performs It:** The question-holder: the funder, program, organization, or researcher who will use the collected data to make decisions.
 
 **How It Connects To Stage 2:** Each piece of information needed in the ideation record becomes the input for one field specification in Stage 2. The criterion intent for each Stage 2 field is derived directly from the ideation record's description of the information need. If a Stage 2 field cannot be traced to an ideation record entry, that field lacks a documented rationale and cannot be certified.
+
+**The Downward Interface To The Chain:** When WALKRI operates inside an evaluation chain, the ideation record is where the chain's decision context enters instrument design. The information needs the ideation record names are the chain's decision context, in CRAFT terms the Condition 1 content (what decision the data informs, for whom, what would make the data a good input, and what would make it invalid), expressed as demands on the instruments that will capture it. This is the downward half of the composition relationship described in Part XI: the chain communicates its decision context down to the instruments through the ideation record, and the instruments communicate their resulting precision back up through the conformance record (Section 8.3). When WALKRI is used standalone, the ideation record carries the question-holder's own decision context in the same structural slot.
 
 **Failure Mode When Skipped:** Fields created without an ideation record are typically labels rather than instruments. The creator encodes what they assumed the question was rather than what they actually needed to know. When the data fails to support the decision it was collected for, there is no ideation record to diagnose where the design broke down.
 
@@ -498,8 +522,12 @@ Certification produces a conformance record: a structured document that is the p
 - The form version that was audited
 - For each field: the field name, the field specification version, and the pass/fail/override status of each of the five criterion specification requirements
 - For each override: the text of the flag, the justification for the override, and the name or identifier of the person who authorized it
+- For each instrument: the derived and attested dependency declaration (Section 3.9), or the Declared-Absent value (independent) where the instrument has no dependency edges
+- For each instrument, when WALKRI operates inside an evaluation chain: the chain condition the instrument serves (its layer attribution), or the Declared-Absent value where WALKRI is used standalone
 
 The conformance record is the artifact that a WALKRI-certified program can produce to demonstrate data quality to downstream data consumers, funders, or research partners. It is the machine-readable proof that the form was designed to a known standard.
+
+**Upward recomposition.** When the chain-condition attribution is present, the conformance record recomposes into condition-satisfaction evidence: the certified instruments serving a given chain condition are the instrument-quality evidence that the condition's capture points are sound, which a chain standard above can receive (in CRAFT terms, through its Section 12 layer attribution). The record carries each instrument's conformance with the resolution its criterion elements specify rather than a bare pass mark, so what travels upward is the precision actually achieved at the capture point. This is the upward half of the composition relationship described in Part XI; the downward half is the ideation record (Section 4.1).
 
 ### 8.4 Minimum Conformance Threshold
 
@@ -643,6 +671,52 @@ WALKRI addresses INPAS requirements at the intake specification layer. INPAS req
 
 ---
 
+## Part XI: Inheritance and Position in the Standards Architecture
+
+WALKRI declares its own position in the standards architecture. A standard that conforms to upstream standards without declaring which ones, and in what role, leaves its inheritance illegible. This Part is WALKRI's self-contained statement of what it inherits, how it composes with the standards around it, and why each of its five requirements exists.
+
+### 11.1 Position: A From-Below Instrument-Quality Standard
+
+WALKRI is a domain-general standard for the quality of an instrument at the point of data capture. It stands in two distinct relationships to the standards around it, and the two must not be fused.
+
+The first is inheritance. WALKRI selectively inherits CRAFT's instrument-facing conditions and descends from the Coordination Structural Integrity Suite, whose root is the Precision-First Design Standard. WALKRI is not a domain application of CRAFT: a domain application (CROSS is the grants one) inherits CRAFT's full chain-framing conditions and adds domain-specific requirements, whereas WALKRI carries only the conditions that bear on whether a single captured datum is legible, knowable, and reliable. In inheritance terms WALKRI is a sibling of the domain applications under CRAFT, not one of them. That it is not a domain application is its designed role, not a gap.
+
+The second relationship is composition. A domain application composes with WALKRI: the domain standard sets the gates a submission must pass, and WALKRI sets what each instrument inside those gates must satisfy for the data the gate reads to be sound. This is the rigor sandwich, stated as domain-in-the-middle: CRAFT's construction grammar and six conditions set what the domain's chain must satisfy; the domain standard sits in the middle as the gates; WALKRI holds the instrument quality inside each gate. The domain conforms to both at once and communicates its precision in both directions, up to CRAFT in the construction of its chain and down to WALKRI in the definition of its capture points. The dependency runs one way: a domain application references WALKRI, and WALKRI never references a domain application. WALKRI is portable and independently operable through its Part II interfaces, and the composition position engages only when a program composes WALKRI with a chain standard.
+
+These two relationships answer different questions and neither substitutes for the other. The composition relationship is not transclusion. Transclusion in WALKRI concerns only its internal unit (Part I): the form field is one named instantiation of the general instrument, not a stripped-down version of any domain's fields. The composition relationship concerns how a domain application and WALKRI work together. Conflating the two produces the error of saying a domain application transcludes WALKRI, which it does not; it composes with it.
+
+The canonical statement of how CRAFT, CROSS, and WALKRI relate, including the rigor sandwich as a named element, is the interaction-architecture document (`craft-csis-frame-language-walkri-interaction-architecture-0_1_0.md`). This Part declares WALKRI's own position and points there for the cross-standard picture.
+
+### 11.2 Upstream Inheritance Receipt
+
+This receipt declares WALKRI's inheritance from each upstream standard, with every non-conformance labeled as either out of scope (inappropriate to an artifact-quality standard's nature) or appropriate and not yet implemented (a gap to close). Conflating the two would let scope hide real gaps.
+
+Spine: the Precision-First Design Standard, floor direction. WALKRI is the field-definition-level instantiation of the precision-deficit floor; it implements the operational-definition requirement, design-time adoption, the normative-substitution diagnosis, and discretion-point specification. Named not-yet-implemented gaps: the precision-imposition ceiling, self-application, and instrument-level falsifiability.
+
+CRAFT, instrument-facing conditions, selectively inherited: Condition 3 (valid measurement instruments) and Condition 4 (pre-specified criteria) strongly; Condition 2 (construct definition) on the operational-definition side, with the construct-to-estimand adequacy statement a named gap. WALKRI is displaced on Condition 1, relocating the decision-context requirement to the program that uses it through the ideation stage and carrying none for itself; out of scope on Condition 5 (decision logic, downstream of capture); and single-loop only on Condition 6 (versioning and re-audit, without loop-depth propagation, which is the instrument-level falsifiability gap). By CRAFT's own construction grammar WALKRI carries no construction-grammar declaration and is therefore a chain-quality standard, not a CRAFT domain application. This is the placement, not a deficiency.
+
+Scoped strong inheritance: the Sensemaking Standard, the Residue invariant and the Witness-Reception scale only. WALKRI's provenance and schema architecture implements these directly. The capacity, inter-personal, and liminal-phase requirements are out of scope where they concern the producing process rather than the artifact.
+
+Mediated inheritances, each an instrument-layer slice that follows from making a field precise and legible before collection: the Information Asymmetry Classification Standard (Classes 3, 5, 6, and Extension Class C, at the instrument layer); the Structural Consent Legibility Standard (the legibility obligation at the field level); the Structural Power Obligation Standard (interpretive-power distribution through field specification); the Adverse-Signal Engagement Principle (the Notice-phase instrument requirements); the Coordination Scaling Standard (structural legibility).
+
+Out of scope, with reason: the Regenerative Obligation Standard (return and extraction direction is a coordination-ethics concern orthogonal to a field-quality instrument; WALKRI makes extraction nameable through provenance and no more); the Four Batteries Capacity Standard (contributor capacity and depletion is an organizational-capacity concern, with the depletion-degrades-specification touchpoint carried in guidance); the Conflict Transformation Standard (dispute process and the human-operator role is a separate domain, carried as a compatibility statement).
+
+The universal boundary across all of these: WALKRI guarantees the output, the well-formed instrument, not the process that produced it, not the operational phase after collection, and not how the standard itself is maintained. The single most consequential gap is that WALKRI carries response-level falsifiability (the conformance threshold) but not yet instrument-level falsifiability (a way to discover from collected data that the instrument specification itself was wrong); that gap is the named upgrade path, not a property the standard claims to have closed.
+
+### 11.3 The Derivation Layer
+
+Each of the five criterion specification requirements (Part III) secures a quality and descends from an upstream commitment. The requirement is the normative obligation, stated so it can be checked from the artifact; the quality is what the requirement secures; the descent names where the obligation comes from. This layer explains why each requirement exists. It is not itself a set of conformance checks: the qualities are predicates that cannot all be read off the artifact alone, and making them into requirements would commit the normative-substitution failure the Precision-First Design Standard forbids. The five criterion elements are the conformant normative layer; the qualities below are what they are for.
+
+- Criterion intent secures validity: a documented logical chain from the evidence to the measurement claim, and a measurement claim legible to one reader distinct from the label. It descends from the Precision-First operational-definition requirement applied to the measurement claim.
+- Operational definition secures reliability: two readers resolve the same response the same way. It descends from the Precision-First operational-definition requirement applied to each response category.
+- Response form secures precision: the response type resolves differences at the magnitude the decision requires. It descends from the Precision-First requirement that an instrument be capable of the resolution its decision needs.
+- Evidence form secures integrity and verifiability: a claim has an independent verification path that separates evidence from the party who benefits from a favorable outcome. It descends from the Information Asymmetry Classification Standard and the Structural Power Obligation Standard at the instrument layer.
+- Conformance threshold secures response-level falsifiability: a response can be shown to pass or fail against a pre-declared bar. It descends from CRAFT Condition 4, pre-specified criteria.
+
+The five base quality dimensions explored in the parked per-axis architecture (construct validity, falsifiability, legibility, navigability, coupling-readiness) are the qualities this layer names, not a second set of requirements. Coupling-readiness in particular is configuration-level content, secured by the instrument dependency declaration (Section 3.9), not a per-instrument predicate.
+
+---
+
 ## Part XII: Companion Documents
 
 WALKRI v0.1.0 is accompanied by six companion documents.
@@ -657,7 +731,7 @@ WALKRI v0.1.0 is accompanied by six companion documents.
 
 **WALKRI-interface-specification-0_1_0.md** provides the detailed technical specifications for the three interfaces described in Part II, including the JSON Schema mapping, the REDCap and XLSForm compatibility mappings, and the detailed alignments with Croissant, FAIR, and W3C PROV.
 
-**WALKRI-CROSS-boundary-0_1_0.md** provides the formal boundary document that specifies the division of responsibilities between CROSS and WALKRI. It is the reference document for implementers who are deploying both standards and need to know, for any given requirement, whether CROSS or WALKRI is the governing authority.
+**WALKRI-CROSS-boundary-0_1_0.md** is retired. It described the CROSS-WALKRI relationship as a division of authority, a framing superseded by composition (the rigor sandwich). The relationship is now specified in the interaction-architecture document (the canonical cross-standard statement), in Part XI of this standard (WALKRI's own position), and in CROSS Part I and the CROSS inheritance receipt (CROSS's own position). The file is retained as a tombstone pointing to those.
 
 **WALKRI-runbooks-0_1_0.md** provides pre-audited field specification packages for common program contexts. Each runbook is a deployable set of WALKRI-conformant field definitions that a program can adopt as a starting configuration and modify. Six runbooks correspond directly to the six CROSS runbooks; three further runbooks address institutional framework requirements (USAID PIRS, OECD DAC, DPG Standard). Runbooks are the primary mechanism for lowering the barrier to WALKRI conformance: programs start with a runbook, review and modify fields for their specific context, and produce a conformant field set without building from the full specification.
 
@@ -681,6 +755,7 @@ The following questions are genuine open design problems as of v0.1.0. They are 
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.2.0 | 2026-06-13 | WALKRI reconception landed. The unit of specification is now the instrument, with a form field, prompt constraint, structured-output schema element, rubric item, and extraction specification as named instantiations in different modalities (Part I, Part III head); the form field is one instantiation rather than the definition. Instrument dependency declaration added as Section 3.9 (derive-and-attest): a form's dependency graph is derived mechanically from the instrument set's own formal logic, attested, and carried in the conformance record, closing the soundness hole where a certified form could contain conditional logic the certification never assessed; independent instruments use the Declared-Absent convention. New Part XI (Inheritance and Position) declares WALKRI's self-contained upstream inheritance receipt (Precision-First Design Standard spine, selective inheritance of CRAFT's instrument-facing conditions, the mediated and out-of-scope statuses), the composition position (the rigor sandwich, domain-in-the-middle, one-way dependency), the transclusion-versus-composition distinction, and the derivation layer pairing each criterion element with the quality it secures and its upstream descent. The downward interface is named in Stage 1 ideation (Section 4.1) and upward recomposition in the conformance record (Section 8.3), the two halves of the composition relationship. The per-axis quality tensor reconception is parked as a candidate architecture, its detections honored by the instrument-as-unit and dependency-declaration moves, reopening only on AI and machine-learning evidence that the unit of specification there is the graph rather than the node. The filename stem 0_1_0 is retained as the WALKRI suite's stable series identifier; the internal version is authoritative. Instrument-level falsifiability and the upward-CRAFT candidates are held for their own session. |
 | 0.1.9 | 2026-06-08 | Disbursement-authority instrument (Section 3.8): the Governed state is renamed Collective, completing the Governed-to-Collective disbursement-state rename across the suite (the set is now individual, collective, delegated). The Frame Language own-voice alignment was re-verified clean (em-dash and watchlist), and the document version stamp in the heading, which had lagged at 0.1.6, is corrected to match the frontmatter. No primitive, gate, or requirement changed; vocabulary and naming only. |
 | 0.1.8 | 2026-06-03 | Acronym expansion corrected in three locations (frontmatter title, document heading, Part I body sentence): "Working Architecture for Legible, Knowledge-Ready Intake" replaced with "Working Architecture for Legible, Knowable, Reliable Instrumentation". No structural or normative content changed. |
 | 0.1.7 | 2026-05-23 | Primitive rename cascade applied. Section 3.8: the Governance Resilience instrument is now the Continuity Capacity instrument; the three-state vocabulary (Single, Partial, Resilient) and all field requirements are preserved. Preamble reference list updated to the new primitive name. Historical changelog entries below retain prior primitive names as they stood at the time of release. |

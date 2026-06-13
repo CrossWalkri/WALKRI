@@ -1,14 +1,14 @@
 ---
 title: WALKRI Guidance
-version: 0.1.3
-date: 2026-06-08
+version: 0.1.4
+date: 2026-06-13
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Guidance
 
-Version 0.1.3 | 2026-06-08 | CC0
+Version 0.1.4 | 2026-06-13 | CC0
 
 ---
 
@@ -20,11 +20,11 @@ Funders designing intake forms will use Parts 2, 3, and 4 most heavily. Stage 1 
 
 Auditors assessing conformance will use Parts 3, 6, and 7. The field specification requirements in Part 3 operationalize the five criterion specification elements from the standard. Part 6 catalogs the failure patterns that appear most often in practice. Part 7 explains how to interpret and communicate the conformance record that an audit produces.
 
-Researchers building surveys will use Parts 2, 3, and 5. The three-stage process and five criterion specification requirements apply to survey instruments regardless of the form platform used or whether any obligation standard governs the collection.
+Researchers building surveys will use Parts 2, 3, and 5. The three-stage process and five criterion specification requirements apply to survey instruments regardless of the form platform used or whether any obligation standard specifies the collection.
 
 Developers integrating WALKRI into tools or pipelines will use Part 3 for the specification requirements and the Appendix for a compact reference format.
 
-The WALKRI standard states requirements: what a field must contain, what process must be followed, what quality standards the data must meet. This document explains how to meet those requirements in practice. The standard is authoritative; this document is operational. Where there is any conflict, the standard governs.
+The WALKRI standard states requirements: what a field must contain, what process must be followed, what quality standards the data must meet. This document explains how to meet those requirements in practice. The standard is authoritative; this document is operational. Where there is any conflict, the standard prevails.
 
 If you are starting a new form or survey from scratch, begin with Part 2 and work through the document in order. If you are assessing an existing form, begin with Part 6 to identify common failures, then use Part 3 to evaluate specific fields. If you are reading an audit report for the first time, go directly to Part 7.
 
@@ -32,7 +32,7 @@ If you are starting a new form or survey from scratch, begin with Part 2 and wor
 
 ## Part 2: Running Stage 1 (Ideation) in Practice
 
-Stage 1 produces an ideation record: a structured document that names each information need the form is intended to satisfy, the decision that need informs, and the failure mode if the information is missing or imprecise. The ideation record is not published to applicants. It is a design document that governs what fields get built in Stage 2 and why.
+Stage 1 produces an ideation record: a structured document that names each information need the form is intended to satisfy, the decision that need informs, and the failure mode if the information is missing or imprecise. The ideation record is not published to applicants. It is a design document that specifies what fields get built in Stage 2 and why.
 
 **How to conduct an ideation session.** An ideation session is a working conversation between the people who will use the collected data to make decisions. It is not a brainstorming session about what questions might be interesting to ask. Stay anchored to decisions and failure modes, not to the surface appearance of the form.
 
@@ -100,7 +100,7 @@ Labels are names. Intents are measurement claims. The gap between the two is whe
 
 For example, a conformance threshold for DPG Indicator 2 (use of an approved open license) might read: "The applicant must provide a clearly stated SPDX license identifier in the project repository's root-level LICENSE file or README. A reference to a license in prose text without an SPDX identifier does not satisfy this indicator. A link to a third-party license text without reproduction or reference in the repository does not satisfy this indicator." The threshold statement for the full set of indicators might read: "All nine indicators must be satisfied for gate passage. Indicators 1, 2, and 3 are non-waivable. For indicators 4 through 9, an applicant who cannot satisfy an indicator may submit a documented mitigation plan; a maximum of two indicators may be satisfied via mitigation plan."
 
-**When the requirement applies.** The conformance threshold requirement applies whenever a field references an external standard. A field that uses its own operational definition without reference to an outside framework does not need a conformance threshold; the operational definition itself governs interpretation. The conformance threshold is required only when the field says, in effect, "the applicant must satisfy some external authority's standard," because that construction delegates interpretation to the external standard without specifying how that standard applies in this context.
+**When the requirement applies.** The conformance threshold requirement applies whenever a field references an external standard. A field that uses its own operational definition without reference to an outside framework does not need a conformance threshold; the operational definition itself specifies interpretation. The conformance threshold is required only when the field says, in effect, "the applicant must satisfy some external authority's standard," because that construction delegates interpretation to the external standard without specifying how that standard applies in this context.
 
 ---
 
@@ -126,11 +126,11 @@ When the Stage 2 specification is complete, Stage 3 should take significantly le
 
 ## Part 5: Using WALKRI Without an Obligation Standard
 
-Organizations that want to improve data collection quality without adopting any external obligation framework use WALKRI's three-stage process and five criterion specification requirements as their complete specification authority. Part III of the standard is the direct specification authority in this case. Nothing in the three-stage process or the five criterion specification requirements assumes that any external obligation standard governs what is being collected.
+Organizations that want to improve data collection quality without adopting any external obligation framework use WALKRI's three-stage process and five criterion specification requirements as their complete specification authority. Part III of the standard is the direct specification authority in this case. Nothing in the three-stage process or the five criterion specification requirements assumes that any external obligation standard specifies what is being collected.
 
 **The conformance threshold requirement without an external obligation standard.** When no external obligation standard is referenced, the conformance threshold requirement applies only to external standards the form itself references. A form that refers to DPG qualification, OSI-approved licenses, or any other external framework must specify a conformance threshold for that reference. A form that uses only its own operational definitions and does not reference any external standard does not need a conformance threshold for any field.
 
-When an obligation standard such as CROSS governs the form, that standard's gate criteria may generate conformance threshold requirements for specific fields because the obligation standard specifies what external standards the program must enforce and how. The other four requirements, criterion intent, operational definition, response form, and evidence form, apply identically whether or not an obligation standard is present.
+When an obligation standard such as CROSS specifies the form, that standard's gate criteria may generate conformance threshold requirements for specific fields because the obligation standard specifies what external standards the program must enforce and how. The other four requirements, criterion intent, operational definition, response form, and evidence form, apply identically whether or not an obligation standard is present.
 
 **Starting point for independent adoption.** Begin with the ideation session described in Part 2. The diagnostic question, "what decision will this data inform, and what is the failure mode if the data is missing or imprecise?", applies regardless of what the form is for.
 
@@ -154,7 +154,7 @@ The fix is to change the response form to multi-select when the underlying const
 
 **Failure 3: External standard reference without conformance threshold.** A criterion that reads "the project must be DPG-eligible" or "the project must use an OSI-approved license" without specifying which indicators or requirements apply, what evidence satisfies each, and what the minimum threshold for passage is.
 
-This pattern produces bad data because the external standard's requirements are not binary, and reviewers must construct their own interpretation of what compliance means. Different reviewers apply different thresholds. Outcomes reflect reviewer assignment rather than applicant compliance with the standard.
+This pattern produces bad data because the external standard's requirements are not binary, and reviewers must construct their own interpretation of what conformance means. Different reviewers apply different thresholds. Outcomes reflect reviewer assignment rather than applicant conformance to the standard.
 
 The fix is to write a conformance threshold that enumerates the applicable indicators or requirements, specifies the evidence that satisfies each, and names the minimum threshold. The DPG Standard case is worked through in detail in Part 3.5 above. For simpler external standards such as an OSI license list, the conformance threshold is also simpler: "The license must appear on the OSI-approved license list at https://opensource.org/licenses, accessed at the version archived on [date]. SPDX identifiers are acceptable in place of full license names provided the identifier maps to an OSI-approved license on that list."
 
@@ -214,7 +214,7 @@ When resolving a fail finding, return to the Stage 2 specification for the affec
 
 **Evidence form.** The specific artifact that satisfies the criterion, with its type, location, access path, and content requirements. Failure mode when absent: reviewers make implicit artifact quality judgments inconsistently across the cohort; the data cannot be audited.
 
-**Conformance threshold.** When an external standard is referenced: which components apply, what evidence satisfies each, and the minimum threshold for passage. Failure mode when absent: reviewer-level interpretation of the external standard becomes the de facto threshold; outcomes reflect reviewer assignment rather than applicant compliance.
+**Conformance threshold.** When an external standard is referenced: which components apply, what evidence satisfies each, and the minimum threshold for passage. Failure mode when absent: reviewer-level interpretation of the external standard becomes the de facto threshold; outcomes reflect reviewer assignment rather than applicant conformance.
 
 ### Five Data Quality Standards
 
@@ -244,7 +244,7 @@ WALKRI Section 3.7 introduces three applicant identity instrument types. Identit
 
 ### The Three Instrument Types
 
-**Legal entity instrument.** This field asks: who, legally, is accountable for delivering the obligations and receiving disbursement? The criterion intent is identifying the legal person or registered organization. The key design principle is that a legal entity instrument never accepts display names, project names, brand names, or GitHub organization names as satisfying answers unless those names are also the legal name of record. Many programs accept project names in a legal entity field and then find, at completion or continuation, that they have no clear accountability chain. The Stage 2 specification for this field must state the jurisdiction of registration as a required element alongside the legal name.
+**Legal entity instrument.** This field asks: who, legally, is answerable for delivering the obligations and receiving disbursement? The criterion intent is identifying the legal person or registered organization. The key design principle is that a legal entity instrument never accepts display names, project names, brand names, or GitHub organization names as satisfying answers unless those names are also the legal name of record. Many programs accept project names in a legal entity field and then find, at completion or continuation, that they have no clear answerability chain. The Stage 2 specification for this field must state the jurisdiction of registration as a required element alongside the legal name.
 
 The failure mode is accepting a display name as a legal entity answer. The Stage 2 specification must include an exclusion criterion stating explicitly: "The following do not satisfy this field: project names, brand names, GitHub organization names, pseudonyms, and display names that are not also the applicant's legal name in the stated jurisdiction."
 
@@ -282,7 +282,7 @@ Section 3.8 adds five WALKRI instruments for the CROSS entry gate declarations. 
 
 **Disbursement authority instrument:** The three-state structure (Individual, Collective, Delegated) exists because a text field asking "who receives funds" produces unverifiable narrative. The instrument requires naming specific mechanisms and individuals. For Collective state, require the multisig address or governance contract to be named explicitly so it can be resolved on-chain. For Delegated state, require both the receiving entity and the deploying entity to be named. The most common error is applicants selecting Individual when a multisig exists that is not named.
 
-**Continuity Capacity instrument:** The key diagnostic question is: if the named primary contributor stopped working tomorrow, would the project continue? Single state is not a disqualifier but it is a risk factor that affects the sustainability stance assessment. Programs should ask applicants to name their primary contributor explicitly, not just describe their governance structure generically.
+**Continuity Capacity instrument:** The key diagnostic question is: if the named primary contributor stopped working tomorrow, would the project continue? Single state is not a disqualifier but it is a risk factor that affects the sustainability stance assessment. Programs should ask applicants to name their primary contributor explicitly, not just describe their decision-standing structure generically.
 
 **Obligation fulfillment record instrument:** This instrument activates only for returning applicants and applicants citing prior work. The assessment procedure is sequential: check the KarmaGAP API for grants associated with the applicant's wallet address before reading the applicant's self-report. Discovering grants the applicant did not disclose is a material non-disclosure, treated more severely than a disclosed partial fulfillment.
 
@@ -294,6 +294,7 @@ Section 3.8 adds five WALKRI instruments for the CROSS entry gate declarations. 
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.4 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: "governs/governed" recast to "specifies" or "prevails" in own-voice prose (the ideation record specifies what fields get built; an obligation standard specifies the collection; the operational definition specifies interpretation; CROSS specifies the form; on conflict the standard prevails); own-voice "compliance" recast to "conformance" (Failure 3 prose and the Conformance threshold quick-reference failure-mode line); "accountable (of the legal party)" recast to "answerable" and "accountability chain" to "answerability chain" in the legal entity instrument; "governance structure" recast to "decision-standing structure" in the Continuity Capacity guidance. Kept as admissible: the quoted bad-field example "Does your project have a governance structure? Yes/No" (Failure 6); "under whose governance, employment, or resources" and "resources, governance, and decisions" as the named organizational-context sense of the prior entity relationship instrument; the named technical concepts "governance tokens" and "governance contract"; the historical changelog records naming the prior Governance Resilience primitive. No field, conformance threshold, or mapping changed; vocabulary only. |
 | 0.1.3 | 2026-06-08 | Primitive rename cascade propagated: the Governance Resilience instrument is now the Continuity Capacity instrument, and the disbursement-authority Governed state is now Collective (the "For Collective state" guidance). Propagates the Foundation v0.1.7 and v0.2.2 renames. No guidance content or requirement changed; naming only. |
 | 0.1.2 | 2026-05-18 | Part 9 added: Working with Gate Declaration Fields (Section 3.8). Covers the five gate declaration instruments: revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, development stage. Constraint network framing between instruments. Activation rule for obligation fulfillment record. Evidence plausibility by stage for development stage instrument. |
 | 0.1.1 | 2026-05-17 | Part 8 added: Working with Identity Fields (Section 3.7). Covers the three instrument types (legal entity, display name, prior entity relationship), design principles and failure modes for each, the self-reference consistency requirement, and design notes for programs using continuation gates. |

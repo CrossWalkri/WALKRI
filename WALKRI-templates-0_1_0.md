@@ -1,14 +1,14 @@
 ---
 title: WALKRI Templates
-version: 0.1.4
-date: 2026-06-08
+version: 0.1.6
+date: 2026-06-13
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 ---
 
 # WALKRI Templates
 
-Version 0.1.4 | 2026-06-08 | CC0
+Version 0.1.6 | 2026-06-13 | CC0
 
 These templates correspond to the four artifacts produced by the WALKRI three-stage process: the Ideation Record (Stage 1), the WALKRI Field Specification (Stage 2), the Applicant Guidance Document (Stage 3), and the WALKRI Audit Report (conformance record). Each template includes a brief description and field-by-field instructions. Placeholder text appears in [brackets].
 
@@ -84,7 +84,7 @@ Notes on known complexity or edge cases: [Optional. Record anything that may
 
 The WALKRI Field Specification is the Stage 2 output and the central artifact of the entire process. One specification is produced per field. The specification contains all five criterion specification requirements from Part III of the WALKRI standard: criterion intent, operational definition, response form, evidence form, and conformance threshold.
 
-The field specification governs everything downstream: it is the source for the Stage 3 applicant guidance, the artifact the WALKRI Audit Tool assesses, and the machine-readable definition that travels with the collected data. A field cannot be certified without a complete specification.
+The field specification structures everything downstream: it is the source for the Stage 3 applicant guidance, the artifact the WALKRI Audit Tool assesses, and the machine-readable definition that travels with the collected data. A field cannot be certified without a complete specification.
 
 Produce one Field Specification for each information need in the Ideation Record. The criterion intent in Section B should be traceable directly to the corresponding Ideation Record entry.
 
@@ -109,6 +109,28 @@ Derived from ideation record: [Reference to the information need this field addr
   information need. Example: "Ideation Record, [Program Name], [YYYY-MM-DD]:
   'We need to know whether the applicant's project repository is publicly accessible
   under an approved open license at the time of application.'"]
+
+Dependency declaration: [The edges this instrument carries to other instruments in
+  the set, per Section 3.9 of the standard. Do not author these edges by hand from
+  scratch; read them off the instrument set's own formal logic (in JSON Schema, the
+  conditional keywords; in the form-rendering formats, the equivalent skip, branch,
+  and ordering logic) and record what that logic actually carries for this instrument.
+  If this instrument has no edges, the value is the single word: independent. This is
+  the Declared-Absent convention and is the default for any instrument with no
+  conditional, ordering, or cross-instrument logic. If this instrument has edges,
+  record each of the following that applies:
+    Activation conditions: [What upstream response makes this instrument appear or
+      apply. Example: "Activates only when 'Revenue architecture type' is Commercial
+      or Hybrid."]
+    Assessment dependencies: [What must resolve before this instrument's conformance
+      threshold can be assessed. Example: "Cannot be assessed until 'Development stage'
+      resolves, because the stage determines the evidence threshold applied here."]
+    Ordering constraints: [Any required order relative to other instruments.
+      Example: "Must be presented after the legal entity instrument."]
+    Cross-instrument consistency constraints: [Any value that must agree with another
+      instrument's value. Example: "Declared revenue here must be consistent with the
+      concurrent funding disclosure instrument."]
+  Example for an independent instrument: "independent".]
 
 === SECTION B: CRITERION SPECIFICATION ===
 
@@ -390,12 +412,66 @@ Program or form name: [Full name of the program or form audited]
 Form version audited: [Version number of the form. Must correspond to a specific,
   dated release of the form, not a draft or working copy.]
 
-WALKRI version applied: [0.1.0]
+WALKRI version applied: [Internal version of the WALKRI standard the audit applied,
+  e.g. 0.2.0. The filename stem WALKRI-standard-0_1_0.md is the stable series
+  identifier; the internal version is authoritative.]
 
 Audit date: [YYYY-MM-DD]
 
 Auditor: [Organization name, practitioner name, or tool identifier.
   Example: "WALKRI Audit Tool v0.1.0" or "Independent Review, [Org Name]"]
+
+---
+
+=== FORM-LEVEL DEPENDENCY GRAPH (Section 3.9) ===
+
+[This is the instrument set's dependency graph: the edges between instruments, as
+distinct from the per-instrument nodes assessed below. It is derived from the
+instrument set's own formal logic and is the one source of truth for the edges; the
+per-instrument dependency declarations in each field assessment are read off this
+same graph. The designer attests to the derived graph here, and an auditor can
+regenerate it from the specification. A form whose instruments are all independent
+records "independent" for every instrument and carries no edges.
+
+Provide the graph in two forms: the human-readable edge list and the JSON Schema
+native read-out it was derived from. The two must agree.]
+
+Human-readable edge list: [One line per instrument. For an instrument with no edges,
+  write "independent". For an instrument with edges, name each edge type that applies
+  (activation, assessment dependency, ordering, cross-instrument consistency) and the
+  instrument it links to.
+  Example:
+    Legal entity: independent
+    Display name: independent
+    Revenue architecture: independent
+    Additionality boundary: activation (appears only when Revenue architecture is
+      Commercial or Hybrid); cross-instrument consistency (must agree with concurrent
+      funding disclosure)
+    Development stage: independent
+    Stage evidence threshold: assessment dependency (cannot be assessed until
+      Development stage resolves)]
+
+JSON Schema native read-out: [The conditional keywords in the instrument set's JSON
+  Schema from which the edge list above was derived. For form-rendering formats other
+  than JSON Schema, record the equivalent skip, branch, and ordering logic read out
+  per WALKRI-interface-specification-0_1_0.md. For an all-independent set, this is the
+  schema with no if/then/dependentSchemas/dependentRequired keywords, which is itself
+  the evidence that every instrument is independent.
+  Example (the activation edge above, in JSON Schema):
+    "if":   { "properties": { "revenue_architecture": { "enum": ["commercial", "hybrid"] } } },
+    "then": { "required": ["additionality_boundary"] }
+  ]
+
+Designer attestation: [Name or role of the designer attesting that the edge list and
+  the JSON Schema native read-out above are the derived dependency graph of this
+  instrument set, and that no instrument carries an edge the graph omits. Example:
+  "Attested by [Name/Role], [YYYY-MM-DD]. The graph above was derived from the form
+  schema at [reference] and is regenerable from it."]
+
+Manually attested edges (platform-limitation overrides only): [If a required edge
+  cannot be expressed in the form-rendering format, record it here with the platform
+  named, the specific limitation, and the compensating control that holds the edge in
+  practice. Per the rubric 2.6 override. If none, write "None."]
 
 ---
 
@@ -421,6 +497,14 @@ Evidence form: [Pass / Fail / Override-documented]
 
 Conformance threshold: [Pass / Fail / Override-documented / N/A]
   [Mark N/A if this field does not reference an external standard.]
+
+Instrument dependency declaration: [Pass / Fail / Override-documented]
+  [Records this instrument's edges as carried in the form-level dependency graph
+  below, or the Declared-Absent value (independent). Pass when the instrument's
+  edges are derived from the set's formal logic and match the form-level graph, or
+  when the instrument is correctly marked independent. Fail when the instrument
+  carries conditional, ordering, or cross-instrument logic that the graph does not
+  account for, or is marked independent while carrying edges. Per Section 3.9.]
 
 Data quality notes: [Record any Validity, Integrity, or Precision flags raised
   during the audit. If none, write "None." Reliability and Timeliness flags may
@@ -491,7 +575,7 @@ These templates are designed to be used in sequence. The Ideation Record produce
 
 Information flows in one direction through the process: from ideation to specification to applicant guidance. No new definitional content is introduced in Stage 3. If the Applicant Guidance Document needs to say something that is not in the Field Specification, the specification is incomplete and should be revised before Stage 3 begins.
 
-The Audit Report is a conformance record, not a quality judgment. A field with a documented override is not a worse field than one without; the override system exists precisely to allow context-specific decisions to be made transparently rather than forcing false conformance or leaving decisions undocumented. The distinction that matters for certification is between overrides (documented and authorized) and failures (unresolved and undisclosed).
+The Audit Report is a conformance record, not a quality judgment. A field with a documented override is not a worse field than one without; the override system exists precisely to allow context-specific decisions to be made legibly rather than forcing false conformance or leaving decisions undocumented. The distinction that matters for certification is between overrides (documented and authorized) and failures (unresolved and undisclosed).
 
 For worked examples of these templates applied to specific field types, see WALKRI-worked-examples-0_1_0.md.
 
@@ -503,7 +587,7 @@ For worked examples of these templates applied to specific field types, see WALK
 
 The Organizational Identity Declaration is the Section 3.7 instrument package. It is required at all entry specification gates in CROSS-conformant programs regardless of obligation mode. It contains three instruments: the legal entity instrument, the display name instrument, and the prior entity relationship instrument. The third instrument is conditional: it activates only when prior work is cited in the application.
 
-This template is the applicant-facing form for the declaration. It is distinct from the WALKRI Field Specification for each instrument (which follows Template 2). The declaration is what the applicant completes; the field specification is the design document that governs how the declaration is assessed.
+This template is the applicant-facing form for the declaration. It is distinct from the WALKRI Field Specification for each instrument (which follows Template 2). The declaration is what the applicant completes; the field specification is the design document that specifies how the declaration is assessed.
 
 Programs using this template should pair it with a WALKRI Field Specification (Template 2) for each instrument. The two documents together constitute a complete identity declaration implementation.
 
@@ -539,11 +623,11 @@ Registration number or equivalent identifier: [The number assigned by the
   EIN or equivalent. For unregistered individuals: leave blank and explain why
   no registration applies. Example: "Delaware entity number: 7023941"]
 
-If no legal entity exists, state the accountability mechanism: [If you are
+If no legal entity exists, state the answerability mechanism: [If you are
   applying as an individual with no legal entity, state your full legal name
-  and identify who is personally accountable for obligations under this grant.
+  and identify who is personally answerable for obligations under this grant.
   Example: "Applying as Jane Smith, natural person. Jane Smith is personally
-  accountable for all obligations under this grant. No legal entity exists."]
+  answerable for all obligations under this grant. No legal entity exists."]
 
 ---
 
@@ -658,6 +742,8 @@ Independent evidence: [name a verifiable external source that corroborates the d
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.6 | 2026-06-13 | Section 3.9 reflection. Template 2 (Field Specification) Section A gains a Dependency declaration slot: a per-instrument field read off the instrument set's own formal logic, defaulting to the Declared-Absent value (independent) for an instrument with no edges, and recording activation conditions, assessment dependencies, ordering constraints, and cross-instrument consistency constraints where edges exist. Template 4 (Audit Report) gains a form-level Dependency Graph artifact between the header and the field-by-field assessment, given in two agreeing forms (human-readable edge list and JSON Schema native read-out) with a designer attestation and a slot for platform-limitation manual edges; the per-field assessment block gains an Instrument dependency declaration Pass/Fail/Override line. The "WALKRI version applied" placeholder now points to the standard's authoritative internal version rather than a fixed 0.1.0, since the filename stem is the stable series identifier. Light instrument-framing note that a form field is the form-modality instantiation of an instrument; no existing template field, conformance threshold, or mapping changed. |
+| 0.1.5 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: the verb "governs" recast to "structures"/"specifies" in own-voice prose (the field specification structures everything downstream; the design document specifies how the declaration is assessed); own-voice "transparently" recast to "legibly" (the override-system note); "accountability/accountable (of the legal party)" recast to "answerability/answerable" in the Template 5 legal entity instrument no-entity branch, including its worked example. Kept as admissible: the named technical concept "governance contract address" (on-chain, Template 6); the historical changelog records naming the prior Governance Resilience primitive. No template field, conformance threshold, or mapping changed; vocabulary only. |
 | 0.1.4 | 2026-06-08 | Disbursement-authority Governed state renamed Collective in Template 6 (the "[If Collective]" sub-field branch), completing the Governed-to-Collective rename. The version stamps in the frontmatter and heading, which had lagged at 0.1.2 behind the 0.1.3 changelog entry, are corrected. No template content changed; naming only. |
 | 0.1.3 | 2026-05-23 | Primitive rename cascade applied. Template 6: the "Governance Resilience Declaration" sub-template is now the "Continuity Capacity Declaration"; the three-state vocabulary (Single, Partial, Resilient) and the named primary contributor and continuity explanation sub-fields are preserved. Historical changelog entry below retains the prior primitive name as it stood at the time of release. |
 | 0.1.2 | 2026-05-18 | Template 6 added: Gate Declaration Fields (Section 3.8). Covers revenue architecture, disbursement authority, governance resilience, obligation fulfillment record, and development stage declarations with structured sub-fields for each state. |

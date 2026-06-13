@@ -1,7 +1,7 @@
 ---
 title: WALKRI Worked Examples
-version: 0.1.3
-date: 2026-06-08
+version: 0.1.5
+date: 2026-06-13
 license: CC0
 status: Working draft. Companion to WALKRI-standard-0_1_0.md.
 source: Octant Epoch 12 grant evaluation cycle, 2026.
@@ -9,7 +9,7 @@ source: Octant Epoch 12 grant evaluation cycle, 2026.
 
 # WALKRI Worked Examples
 
-Version 0.1.3 | 2026-06-08 | CC0
+Version 0.1.5 | 2026-06-13 | CC0
 
 ---
 
@@ -163,7 +163,7 @@ This example shows a field that passes WALKRI audit without modification. It is 
 
 **Evidence Form:** For each grant listed, a publicly accessible announcement URL or award letter. Self-reported totals without supporting URLs are not accepted. If no public announcement exists, a redacted award letter or a letter of attestation from the funder is acceptable.
 
-**Conformance Threshold:** Not applicable. This field does not reference an external standard. The operational definition above is the compliance specification.
+**Conformance Threshold:** Not applicable. This field does not reference an external standard. The operational definition above is the conformance specification.
 
 **Timeliness Note:** Evidence must reflect the 24-month window ending on the application deadline. Evidence from outside this window should not be submitted and will not be considered.
 
@@ -233,7 +233,7 @@ Three patterns from the Epoch 12 cohort illustrate what the absence of identity 
 
 **Pattern 1: Unverifiable attribution.** Several applications cited prior technical work as evidence of capability without naming the organization under which that work was performed. Evaluators could not determine whether the cited work belonged to the applying entity, to a prior employer, or to a collaborative organization the applicant had since left. Attribution claims could not be assessed as accurate or inaccurate because the attribution was never made specific. The evaluator had to conduct organizational research to reconstruct the entity history that an identity declaration would have surfaced directly.
 
-**Pattern 2: Self-reference inconsistency.** Applications used three or four different names interchangeably: a GitHub organization name in one field, a project name in another, a legal entity name in a third, and a display name in a fourth, with no declared relationship between them. Evaluators could not determine whether these were the same entity viewed from different angles or distinct entities with different accountability structures. In one case, the "solo contributor" category was selected while the evidence field cited repositories owned by a different organization entirely.
+**Pattern 2: Self-reference inconsistency.** Applications used three or four different names interchangeably: a GitHub organization name in one field, a project name in another, a legal entity name in a third, and a display name in a fourth, with no declared relationship between them. Evaluators could not determine whether these were the same entity viewed from different angles or distinct entities with different answerability structures. In one case, the "solo contributor" category was selected while the evidence field cited repositories owned by a different organization entirely.
 
 **Pattern 3: Prior work presented as current ownership.** Applications described technical work performed during employment at a previous organization as if it were the applicant's independent prior work. The cited codebase was owned and maintained by the prior employer; the applicant had departed. No disclosure was made. The evaluator could not assess whether the applicant had legal authority to represent the cited work as their own track record. The application passed initial review and the misrepresentation was discovered only during deep-dive verification of the GitHub repository history.
 
@@ -241,7 +241,7 @@ Three patterns from the Epoch 12 cohort illustrate what the absence of identity 
 
 **Legal entity instrument**
 
-Criterion intent: Identifies the legal person or registered organization legally accountable for delivering grant obligations and receiving disbursement.
+Criterion intent: Identifies the legal person or registered organization legally answerable for delivering grant obligations and receiving disbursement.
 
 Operational definition:
 - Inclusion: the name exactly as it appears in the jurisdiction of registration. For a corporation: the registered corporate name. For a natural person with no entity: full legal name.
@@ -308,7 +308,7 @@ Pattern 3 (prior employer work presented as independent): the current ownership 
 
 ## Example 6: Gate Declaration Fields (Section 3.8) - Three Epoch 12 Patterns
 
-### Pattern A: Grant-Only Revenue with Single Governance (Clean declaration)
+### Pattern A: Grant-Only Revenue with Single Continuity (Clean declaration)
 
 **Application context:** A two-person developer tooling project with no token, no fees, and no commercial revenue. First external grant application.
 
@@ -317,7 +317,7 @@ Revenue architecture type: Grant-only
 Named revenue sources: No revenue sources. This is the project's first external funding application.
 Additionality boundary: Not applicable (grant-only).
 
-**Assessment:** Conformant. Grant-only with no prior funding is a valid and complete declaration. The evaluator notes Stage 1 declaration and Single governance as expected co-occurring states.
+**Assessment:** Conformant. Grant-only with no prior funding is a valid and complete declaration. The evaluator notes Stage 1 declaration and Single continuity capacity as expected co-occurring states.
 
 **Disbursement authority instrument:**
 Authority state: Individual
@@ -367,10 +367,105 @@ Explanation: The third milestone was reduced in scope at the continuation gate d
 
 ---
 
+## Example 7: Instrument Dependency Declaration (Section 3.9)
+
+The first six examples assess instruments as nodes: each field measured something, defined its responses, named its evidence. This example assesses an edge between instruments. The Epoch 12 form, like most intake forms, carried conditional logic: some fields appeared only when an upstream answer took a given value. A node-by-node audit can pass every field in such a form and still never examine the conditional logic that decides which fields a given applicant actually sees and is assessed on. Section 3.9 closes that gap by requiring the form's dependency graph to be derived from the form's own formal logic, attested, and recorded alongside the instruments.
+
+A note on framing: a form field is the form-modality instantiation of an instrument, so the edges below are equally edges between instruments in any modality. This example uses the form-field rendering because that is the one Epoch 12 used.
+
+### The instrument set with a conditional edge
+
+The revenue architecture instrument (Section 3.8) is single-select across four types: grant-only, fee-for-service, commercial, hybrid. A second instrument, the additionality boundary, asks what the grant funds that commercial revenue does not. That second instrument is meaningful only for an applicant who has commercial revenue. The form expresses this as a conditional: the additionality boundary field appears only when the revenue architecture answer is Commercial or Hybrid. That conditional is an edge, and the additionality boundary instrument also carries a second edge, a cross-instrument consistency constraint: the revenue it implies must agree with the applicant's concurrent funding disclosure.
+
+```
+Instruments in the set:
+  Revenue architecture   (single-select: grant-only | fee-for-service | commercial | hybrid)
+  Additionality boundary (text; appears conditionally)
+  Concurrent funding disclosure (structured list)
+
+The edge, as the form's formal logic carries it:
+  Additionality boundary activates only when Revenue architecture is commercial or hybrid.
+  Additionality boundary value must be consistent with Concurrent funding disclosure.
+```
+
+### The derived dependency graph
+
+The graph is not author-written prose about how the form behaves. It is read off the form's own JSON Schema, where the conditional is a formal keyword. The activation edge is the `if/then` block; the consistency edge is recorded as a cross-instrument constraint the auditor confirms against the named instrument.
+
+```
+Human-readable edge list:
+  Revenue architecture:           independent
+  Concurrent funding disclosure:  independent
+  Additionality boundary:         activation (appears only when Revenue architecture
+                                    is commercial or hybrid);
+                                  cross-instrument consistency (must agree with
+                                    Concurrent funding disclosure)
+
+JSON Schema native read-out (the activation edge the list above was derived from):
+  "if":   { "properties": { "revenue_architecture": { "enum": ["commercial", "hybrid"] } } },
+  "then": { "required": ["additionality_boundary"] }
+```
+
+The two independent instruments declare the Declared-Absent value (independent) in one word each; only the additionality boundary instrument carries edges, so only it carries a graph entry beyond the one-word value. This is the design intent of Section 3.9: a shallow form pays almost nothing, and only the instruments that actually branch carry their full edge structure.
+
+### The attested record
+
+The dependency graph travels in the conformance record. The designer attests that the edge list and the JSON Schema native read-out are the form's derived graph and that no instrument carries an edge the graph omits. The attestation is over an artifact an auditor can regenerate from the form schema, so there is one source of truth rather than a hand-written description that can drift from the live form.
+
+```
+Designer attestation: Attested by [Name/Role], 2026-05-15. The graph above was
+  derived from the form schema at [reference] and is regenerable from it. No
+  instrument carries an edge the graph omits.
+Manually attested edges (platform-limitation overrides only): None.
+```
+
+### WALKRI audit result
+
+| Instrument | Dependency declaration | Outcome |
+|---|---|---|
+| Revenue architecture | independent | Pass |
+| Concurrent funding disclosure | independent | Pass |
+| Additionality boundary | activation + cross-instrument consistency, derived and attested | Pass |
+| Form-level dependency graph | derived from the form schema, attested, recorded | Pass |
+
+**Conformant instrument set:** Certified. The graph is derived from the form's own formal logic, attested by the designer, and recorded; the two edgeless instruments are correctly marked independent.
+
+### The non-conformant version (same form, edge present but uncertified)
+
+This is the same form with the same conditional logic, audited node by node only. Every field passes its five criterion elements. The additionality boundary field still appears only for commercial and hybrid applicants, but the form's dependency graph was never derived, attested, or recorded.
+
+```
+Label set as published:   Revenue architecture; Additionality boundary; Concurrent funding disclosure
+Per-field (node) audit:   all five criterion elements Pass on each field
+Dependency graph:         absent (the activation and consistency edges were never derived,
+                            attested, or recorded)
+```
+
+**What happened.** Two applicants traverse the form differently. A grant-only applicant never sees the additionality boundary field; a commercial applicant does. The certification examined each field in isolation and never examined the conditional that produces these two different paths. When the data is pooled, the additionality boundary column is populated for some applicants and empty for others, and the empty cells are ambiguous between "instrument did not apply" and "applicant skipped it." Worse, the cross-instrument consistency edge was never recorded, so a commercial applicant whose additionality boundary contradicts their concurrent funding disclosure passes a node-only audit, because no instrument, taken alone, is wrong. The edge that would have caught the contradiction was the part the audit never looked at.
+
+**WALKRI audit result for the non-conformant version:**
+
+| Instrument | Dependency declaration | Outcome |
+|---|---|---|
+| Revenue architecture | not recorded | Fail (2.6) |
+| Concurrent funding disclosure | not recorded | Fail (2.6) |
+| Additionality boundary | carries activation and consistency edges; not derived, attested, or recorded | Fail (2.6) |
+| Form-level dependency graph | absent while the form carries conditional logic | Fail (2.6) |
+
+**Non-conformant instrument set:** Not certifiable. The form carries conditional and cross-instrument logic with no derived, attested, and recorded dependency graph; this is a blocking failure under rubric 2.6 regardless of every node passing its five criterion elements.
+
+### What the conformant version changes
+
+The difference between the two versions is not new fields and not stricter node requirements; it is whether the edges the form already carries are certified. Deriving the graph from the form schema costs little when the edges are few, and the one-word independent value keeps edgeless instruments cheap. What the certification buys is that the path through the form, the thing that decides what each applicant actually encounters and is assessed on, is part of what was assessed rather than a soundness hole the node-level audit structurally cannot reach.
+
+---
+
 ## Changelog
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.5 | 2026-06-13 | Section 3.9 reflection. Example 7 added (Instrument Dependency Declaration): an instrument set with a conditional edge (the additionality boundary instrument activates only when the revenue architecture answer is commercial or hybrid, and carries a cross-instrument consistency edge to the concurrent funding disclosure), its dependency graph derived from the form's own JSON Schema and shown in two agreeing forms (human-readable edge list and JSON Schema native read-out), the designer attestation, and the WALKRI audit result, with the two edgeless instruments marked Declared-Absent (independent). The contrasting non-conformant version is the same form with the same conditional logic audited node by node only: every field passes its five criterion elements while the dependency graph is absent, a blocking failure under rubric 2.6. Light instrument-framing note that a form field is the form-modality instantiation of an instrument; no existing example field, outcome, conformance threshold, or mapping changed. |
+| 0.1.4 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: own-voice "compliance" recast to "conformance" (Example 3 "the conformance specification"); "accountability/accountable (of the legal party)" recast to "answerability/answerable" (distinct entities with different answerability structures; the Example 5 legal entity instrument criterion intent). Residual prior-primitive wording finished: "Single Governance"/"Single governance" recast to "Single Continuity"/"Single continuity capacity" in Example 6 Pattern A heading and assessment, matching the Continuity Capacity rename already propagated at v0.1.3. Kept as admissible: the quoted published form option list "Code | Community | Research | Governance | Other" and the prose critiquing the ambiguity of its "Governance" option (Example 2); the authored "Governance" contribution-category option definition (named domain concept, on-chain/off-chain governance); the named technical concept "governance token / governance token contract" (Example 6 Pattern B); the historical changelog record naming the prior Governance Resilience primitive. No example field, outcome, conformance threshold, or mapping changed; vocabulary only. |
 | 0.1.3 | 2026-06-08 | Primitive rename cascade propagated: the Governance Resilience instrument is now the Continuity Capacity instrument in Example 6, completing the Foundation v0.1.7 rename in this companion. No example content or outcome changed; naming only. |
 | 0.1.2 | 2026-05-18 | Example 6 added: Gate Declaration Fields (Section 3.8). Three patterns: grant-only with single governance (clean), undisclosed commercial revenue (non-conformant with corrected version), returning applicant with partially fulfilled prior obligation (conformant disclosure). |
 | 0.1.1 | 2026-05-17 | Example 5 added: The Organizational Identity Declaration. Before/after from the Epoch 12 evaluation cycle. Three patterns from evaluation (unverifiable attribution, self-reference inconsistency, prior employer work as independent) with WALKRI-conformant specifications for all three identity instruments and a WALKRI audit result table. |
