@@ -1,6 +1,6 @@
 # WALKRI: Working Architecture for Legible, Knowable, Reliable Instrumentation
 
-Version 0.1.8 | 2026-06-13 | CC0
+Version 0.1.9 | 2026-07-20 | CC0
 
 **Two standards. One problem.**
 
@@ -87,6 +87,21 @@ WALKRI operates at the measurement design layer, which sits above the form build
 Above the field level, a CROSS+WALKRI-conformant round produces data that is structurally comparable across programs and auditable after the fact. That position in the stack is why compatibility is the primary benefit: it does not require replacing what exists below, and it makes everything built above interoperable with everything else built on the same foundation.
 
 Both CROSS and WALKRI are published CC0. No licensing, no arrangements, no asks.
+
+---
+
+## The evidence path
+
+WALKRI's other family is domain-agnostic. Every system that turns records into decisions has the same anatomy: sources feed in material the system did not create, fields capture that material as data, and a chain of evaluation carries it to a claim someone acts on. Knowing begins honestly, or begins broken, in three places, and one standard stands at each. [ORE](https://github.com/CrossWalkri/ORE) stands at the source boundary: what a chain is allowed to assume about what enters it, graded as uncertainty rather than judged as worth, with every output exposing the grade profile of the sources it rests on. WALKRI stands at the field: what a single capture point must carry before it counts as a measurement rather than a label. [CRAFT](https://github.com/CrossWalkri/craft-meta-standard) holds the whole path: the six conditions under which the claim at the end deserves anyone's trust, with CROSS as its first domain application, built for grants.
+
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/evidence-path-0_1_0-dark.svg">
+  <img alt="The evidence path: CRAFT holds the chain from world to decision; ORE grades the source at entry, WALKRI grades the field, the finding binds the claim." src="assets/evidence-path-0_1_0-light.svg" width="880">
+</picture>
+</p>
+
+One commitment runs through all three: no silent trust anywhere, and the worth-judgment left visible in the hands, human or automated, that make it. A record can fail at the source or at the field, and neither standard substitutes for the other; a chain can be flawless in every step and still stand on an unexamined feed, which is why the door and the gauge each get their own discipline. Each standard is independently adoptable; the through line is what they hold together.
 
 ---
 
@@ -227,4 +242,5 @@ Any grants ecosystem can adopt WALKRI without adopting CROSS, the Coordination S
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.9 | 2026-07-20 | Evidence-path section added: places WALKRI in its domain-agnostic family (CRAFT holding the chain, ORE at the source boundary, WALKRI at the field), with the shared evidence-path figure and the through-line statement (no silent trust anywhere; the worth-judgment left visible in the hands, human or automated, that make it). Cross-links to the CRAFT and ORE repositories. No requirement changed. |
 | 0.1.8 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: the rhetorical claim "Round design and form field design are governance ... making governance decisions" recast to "allocate decision standing ... making decision-standing choices", preserving the argument in Frame 2; own-voice "compliance" recast to "conformance" (the conformance-threshold sentence "constitutes conformance"; "not as a separate conformance exercise"; "produces data quality conformance across all of the following frameworks"); "the accountability context that field design must satisfy" recast to "the obligation context". Kept as admissible: "transparency" where it names an SROI principle and the SROI principles sentence (citation use of the source framework's term); "Accountability framework" (Core Humanitarian Standard) and the layer descriptors "Compliance framework" (USAID PIRS) and "Standards governance" (ISEAL) as contextual description of those external tools' own category, flagged for author review. No mapping-table cell, framework claim, conformance threshold, or field changed; vocabulary only. |
