@@ -95,10 +95,11 @@ Both CROSS and WALKRI are published CC0. No licensing, no arrangements, no asks.
 WALKRI's other family is domain-agnostic. Every system that turns records into decisions has the same anatomy: sources feed in material the system did not create, fields capture that material as data, and a chain of evaluation carries it to a claim someone acts on. Knowing begins honestly, or begins broken, in three places, and one standard stands at each. [ORE](https://github.com/CrossWalkri/ORE) stands at the source boundary: what a chain is allowed to assume about what enters it, graded as uncertainty rather than judged as worth, with every output exposing the grade profile of the sources it rests on. WALKRI stands at the field: what a single capture point must carry before it counts as a measurement rather than a label. [CRAFT](https://github.com/CrossWalkri/craft-meta-standard) holds the whole path: the six conditions under which the claim at the end deserves anyone's trust, with CROSS as its first domain application, built for grants.
 
 <p align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/evidence-path-0_1_0-dark.svg">
-  <img alt="The evidence path: CRAFT holds the chain from world to decision; ORE grades the source at entry, WALKRI grades the field, the finding binds the claim." src="assets/evidence-path-0_1_0-light.svg" width="880">
-</picture>
+<img alt="CRAFT is the meta-standard for an evaluation chain, drawn as a room whose six conditions (decision context, ontology, instruments, criteria set, decision logic, feedback) run its length from world to decision. ORE is the door in and STRUCK the door out, the two boundary standards CRAFT requires; WALKRI stands at the intake fields." src="assets/standards-family-0_1_0.svg" width="880">
+</p>
+
+<p align="center">
+<img alt="ORE and STRUCK on their own: the two ends of any chain, independently adoptable, bracketing any process with or without CRAFT in the middle." src="assets/ore-struck-pair-0_1_0.svg" width="820">
 </p>
 
 One commitment runs through all three: no silent trust anywhere, and the worth-judgment left visible in the hands, human or automated, that make it. A record can fail at the source or at the field, and neither standard substitutes for the other; a chain can be flawless in every step and still stand on an unexamined feed, which is why the door and the gauge each get their own discipline. Each standard is independently adoptable; the through line is what they hold together.
