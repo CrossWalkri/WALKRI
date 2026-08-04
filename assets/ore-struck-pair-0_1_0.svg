@@ -1,29 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" fill="none">
-<text x="600" y="44" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">ORE AND STRUCK, ON THEIR OWN</text>
-<text x="600" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">the two ends of any chain, independently adoptable, with or without CRAFT in the middle</text>
+<style>
+@media (prefers-color-scheme: dark) {
+  .t-slate { fill: #8CADBE; }
+  .t-ore   { fill: #D08A82; }
+  .t-muted { fill: #9DA7B0; }
+  .t-body  { fill: #ADBAC7; }
+  .k-muted { stroke: #9DA7B0; }
+}
+</style>
+<text class="t-slate" x="600" y="44" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">ORE AND STRUCK, ON THEIR OWN</text>
+<text class="t-body" x="600" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">the two ends of any chain, independently adoptable, with or without CRAFT in the middle</text>
 
 <!-- baseline flow at y=190 -->
-<text x="70" y="194" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">WORLD</text>
-<line x1="105" y1="190" x2="168" y2="190" stroke="#6E7781" stroke-width="1.4"/><path d="M176 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<text class="t-muted" x="70" y="194" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">WORLD</text>
+<line class="k-muted" x1="105" y1="190" x2="168" y2="190" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M176 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
 
-<text x="245" y="185" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#863A34" font-weight="600">ORE</text>
-<text x="245" y="204" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY IN</text>
-<text x="245" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">grade what enters</text>
+<text class="t-ore" x="245" y="185" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#863A34" font-weight="600">ORE</text>
+<text class="t-muted" x="245" y="204" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY IN</text>
+<text class="t-body" x="245" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">grade what enters</text>
 
-<line x1="300" y1="190" x2="402" y2="190" stroke="#6E7781" stroke-width="1.4"/><path d="M410 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<line class="k-muted" x1="300" y1="190" x2="402" y2="190" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M410 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
 
 <rect x="418" y="160" width="364" height="60" rx="4" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4" stroke-dasharray="5 4"/>
 <text x="600" y="186" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" letter-spacing="2" fill="#24292F" font-weight="600">ANY PROCESS</text>
 <text x="600" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">a CRAFT chain, a pipeline, or a hand method</text>
 
-<line x1="798" y1="190" x2="900" y2="190" stroke="#6E7781" stroke-width="1.4"/><path d="M908 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<line class="k-muted" x1="798" y1="190" x2="900" y2="190" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M908 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
 
-<text x="965" y="185" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">STRUCK</text>
-<text x="965" y="204" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY OUT</text>
-<text x="965" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">certify what leaves</text>
+<text class="t-slate" x="965" y="185" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">STRUCK</text>
+<text class="t-muted" x="965" y="204" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY OUT</text>
+<text class="t-body" x="965" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">certify what leaves</text>
 
-<line x1="1030" y1="190" x2="1098" y2="190" stroke="#6E7781" stroke-width="1.4"/><path d="M1106 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
-<text x="1140" y="194" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">DECISION</text>
+<line class="k-muted" x1="1030" y1="190" x2="1098" y2="190" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M1106 190 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<text class="t-muted" x="1140" y="194" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">DECISION</text>
 
-<text x="600" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">Each is a complete standard on its own. Together they bracket any process, whatever sits in the middle.</text>
+<text class="t-body" x="600" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">Each is a complete standard on its own. Together they bracket any process, whatever sits in the middle.</text>
 </svg>

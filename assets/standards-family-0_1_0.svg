@@ -1,99 +1,75 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">
-<text x="600" y="38" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">CRAFT</text>
-<text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">six conditions a chain must satisfy, each resting on the one before</text>
-<path d="M412.9 317.0 A 190 190 0 0 1 787.1 317.0" stroke="#3E5C6B" stroke-width="2" fill="none"/>
-<path d="M787.1 383.0 A 190 190 0 0 1 412.9 383.0" stroke="#3E5C6B" stroke-width="2" fill="none"/>
+<style>
+@media (prefers-color-scheme: dark) {
+  .t-slate { fill: #8CADBE; }
+  .t-ore   { fill: #D08A82; }
+  .t-muted { fill: #9DA7B0; }
+  .t-body  { fill: #ADBAC7; }
+  .k-slate { stroke: #8CADBE; }
+  .k-ore   { stroke: #D08A82; }
+  .k-muted { stroke: #9DA7B0; }
+}
+</style>
+<text class="t-slate" x="600" y="38" text-anchor="middle" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">CRAFT</text>
+<text class="t-body" x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">six conditions a chain must satisfy, each resting on the one before</text>
+<path class="k-slate" d="M412.9 317.0 A 190 190 0 0 1 787.1 317.0" stroke="#3E5C6B" stroke-width="2" fill="none"/>
+<path class="k-slate" d="M787.1 383.0 A 190 190 0 0 1 412.9 383.0" stroke="#3E5C6B" stroke-width="2" fill="none"/>
 
+<line class="k-muted" x1="316" y1="350" x2="396" y2="350" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M404 350 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<line class="k-muted" x1="872" y1="350" x2="946" y2="350" stroke="#6E7781" stroke-width="1.4"/><path class="t-muted" d="M954 350 l-11 -4.5 l0 9 z" fill="#6E7781"/>
+<text class="t-ore" x="388" y="300" text-anchor="end" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#863A34" font-weight="600">ORE</text>
+<text class="t-muted" x="388" y="319" text-anchor="end" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY IN</text>
+<text class="t-body" x="388" y="386" text-anchor="end" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">what may be assumed</text>
+<text class="t-body" x="388" y="401" text-anchor="end" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">about what enters</text>
+<text class="t-slate" x="880" y="288" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">STRUCK</text>
+<text class="t-muted" x="880" y="307" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY OUT</text>
+<text class="t-body" x="880" y="392" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">what the claim owes</text>
+<text class="t-body" x="880" y="407" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">before anyone acts</text>
 
-<line x1="316" y1="350" x2="396" y2="350" stroke="#6E7781" stroke-width="1.4"/><path d="M404 350 l-11 -4.5 l0 9 z" fill="#6E7781"/>
-<line x1="872" y1="350" x2="946" y2="350" stroke="#6E7781" stroke-width="1.4"/><path d="M954 350 l-11 -4.5 l0 9 z" fill="#6E7781"/>
-<text x="388" y="300" text-anchor="end" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#863A34" font-weight="600">ORE</text>
-<text x="388" y="319" text-anchor="end" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY IN</text>
-<text x="388" y="386" text-anchor="end" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">what may be assumed</text>
-<text x="388" y="401" text-anchor="end" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">about what enters</text>
-<text x="880" y="288" font-family="ui-monospace, monospace" font-size="15" letter-spacing="2.5" fill="#3E5C6B" font-weight="600">STRUCK</text>
-<text x="880" y="307" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6E7781">THE WAY OUT</text>
-<text x="880" y="392" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">what the claim owes</text>
-<text x="880" y="407" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.75">before anyone acts</text>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<text x="600" y="437" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.65">feedback propagates back into the earlier conditions</text>
-<rect x="512" y="292" width="176" height="30" rx="3" fill="#F6F8FA" stroke="#3E5C6B" stroke-width="1.5"/>
-<text x="600" y="312" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" letter-spacing="2" fill="#3E5C6B" font-weight="600">WALKRI</text>
-<text x="600" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">the intake fields, just inside the door:</text>
-<text x="600" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">would two readers collect the same thing</text>
-<text x="600" y="560" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">ORE and STRUCK are each usable on their own; the companion figure shows the pair with no CRAFT in the middle.</text>
-<text x="600" y="660" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">A claim leaving through STRUCK may be the material for another CRAFT chain's ORE input.</text>
+<text class="t-body" x="600" y="437" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#24292F" opacity="0.65">feedback propagates back into the earlier conditions</text>
+<text class="t-body" x="600" y="560" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">ORE and STRUCK are each usable on their own; the companion figure shows the pair with no CRAFT in the middle.</text>
+<text class="t-body" x="600" y="660" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" fill="#24292F" opacity="0.75">A claim leaving through STRUCK may be the material for another CRAFT chain's ORE input.</text>
 <circle cx="435.5" cy="255.0" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="435.5" y="260.0" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">1</text>
-<text x="401.7" y="239.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">decision context</text>
+<text class="t-body" x="401.7" y="239.0" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">decision context</text>
 <circle cx="488.3" cy="196.3" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="488.3" y="201.3" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">2</text>
-<text x="463.5" y="170.4" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">ontology</text>
+<text class="t-body" x="463.5" y="170.4" text-anchor="end" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">ontology</text>
 <circle cx="560.5" cy="164.2" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="560.5" y="169.2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">3</text>
-<text x="553.8" y="132.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">instruments</text>
+<text class="t-body" x="553.8" y="132.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">instruments</text>
 <circle cx="639.5" cy="164.2" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="639.5" y="169.2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">4</text>
-<text x="646.2" y="125.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">criteria set</text>
-<text x="646.2" y="139.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">in advance</text>
+<text class="t-body" x="646.2" y="125.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">criteria set</text>
+<text class="t-body" x="646.2" y="139.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">in advance</text>
 <circle cx="711.7" cy="196.3" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="711.7" y="201.3" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">5</text>
-<text x="736.5" y="170.4" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">decision logic</text>
+<text class="t-body" x="736.5" y="170.4" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">decision logic</text>
 <circle cx="764.5" cy="255.0" r="14" fill="#F6F8FA" stroke="#6E7781" stroke-width="1.4"/>
 <text x="764.5" y="260.0" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#24292F">6</text>
-<text x="798.3" y="239.0" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">feedback</text>
-<path d="M458.8 222.9 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-48.0 458.8 222.9)"/>
-<path d="M522.7 176.4 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-24.0 522.7 176.4)"/>
-<path d="M600.0 160.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(0.0 600.0 160.0)"/>
-<path d="M677.3 176.4 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(24.0 677.3 176.4)"/>
-<path d="M741.2 222.9 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(48.0 741.2 222.9)"/>
-<path d="M691.7 445.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(136.0 691.7 445.0)"/>
-<path d="M600.0 482.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(180.0 600.0 482.0)"/>
-<path d="M508.3 445.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-136.0 508.3 445.0)"/>
+<text class="t-body" x="798.3" y="239.0" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" fill="#24292F" opacity="0.7">feedback</text>
+<path class="t-muted" d="M458.8 222.9 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-48.0 458.8 222.9)"/>
+<path class="t-muted" d="M522.7 176.4 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-24.0 522.7 176.4)"/>
+<path class="t-muted" d="M600.0 160.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(0.0 600.0 160.0)"/>
+<path class="t-muted" d="M677.3 176.4 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(24.0 677.3 176.4)"/>
+<path class="t-muted" d="M741.2 222.9 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(48.0 741.2 222.9)"/>
+<path class="t-muted" d="M691.7 445.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(136.0 691.7 445.0)"/>
+<path class="t-muted" d="M600.0 482.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(180.0 600.0 482.0)"/>
+<path class="t-muted" d="M508.3 445.0 l-9 -4 l0 8 z" fill="#6E7781" transform="rotate(-136.0 508.3 445.0)"/>
 
+<line class="k-ore" x1="421.7" y1="318.6" x2="404.0" y2="315.4" stroke="#863A34" stroke-width="2.4"/>
+<line class="k-ore" x1="421.7" y1="381.4" x2="404.0" y2="384.6" stroke="#863A34" stroke-width="2.4"/>
+<line class="k-ore" x1="412.9" y1="317.0" x2="477.9" y2="328.5" stroke="#863A34" stroke-width="1.8"/>
+<path class="k-ore" d="M477.9 328.5 A 66.0 66.0 0 0 1 412.9 383.0" stroke="#863A34" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
 
+<line class="k-slate" x1="778.3" y1="381.4" x2="796.0" y2="384.6" stroke="#3E5C6B" stroke-width="2.4"/>
+<line class="k-slate" x1="778.3" y1="318.6" x2="796.0" y2="315.4" stroke="#3E5C6B" stroke-width="2.4"/>
+<line class="k-slate" x1="787.1" y1="317.0" x2="852.1" y2="305.5" stroke="#3E5C6B" stroke-width="1.8"/>
+<path class="k-slate" d="M852.1 305.5 A 66.0 66.0 0 0 1 787.1 383.0" stroke="#3E5C6B" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
+<path class="k-muted" d="M752.4 262.0 C 744.8 319.2, 739.2 364.6, 728.1 381.9 A 132 132 0 0 1 471.9 381.9" stroke="#6E7781" stroke-width="1.4" stroke-dasharray="6 5" fill="none"/>
 
-
-
-
-
-
-<line x1="421.7" y1="318.6" x2="404.0" y2="315.4" stroke="#863A34" stroke-width="2.4"/>
-<line x1="421.7" y1="381.4" x2="404.0" y2="384.6" stroke="#863A34" stroke-width="2.4"/>
-<line x1="412.9" y1="317.0" x2="477.9" y2="328.5" stroke="#863A34" stroke-width="1.8"/>
-<path d="M477.9 328.5 A 66.0 66.0 0 0 1 412.9 383.0" stroke="#863A34" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
-
-
-
-
-<line x1="778.3" y1="381.4" x2="796.0" y2="384.6" stroke="#3E5C6B" stroke-width="2.4"/>
-<line x1="778.3" y1="318.6" x2="796.0" y2="315.4" stroke="#3E5C6B" stroke-width="2.4"/>
-<line x1="787.1" y1="317.0" x2="852.1" y2="305.5" stroke="#3E5C6B" stroke-width="1.8"/>
-<path d="M852.1 305.5 A 66.0 66.0 0 0 1 787.1 383.0" stroke="#3E5C6B" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
-<path d="M752.4 262.0 C 744.8 319.2, 739.2 364.6, 728.1 381.9 A 132 132 0 0 1 471.9 381.9" stroke="#6E7781" stroke-width="1.4" stroke-dasharray="6 5" fill="none"/>
+<path class="k-muted" d="M196 470 C 300 452, 360 420, 405 372" stroke="#6E7781" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.4"/>
+<text class="t-slate" x="60" y="462" font-family="ui-monospace, monospace" font-size="12" letter-spacing="2" fill="#3E5C6B" font-weight="600">WALKRI</text>
+<text class="t-body" x="60" y="481" font-family="system-ui, sans-serif" font-size="10.5" fill="#24292F" opacity="0.75">the intake instrument, applied at ORE:</text>
+<text class="t-body" x="60" y="495" font-family="system-ui, sans-serif" font-size="10.5" fill="#24292F" opacity="0.75">would two readers collect the same thing</text>
 </svg>
