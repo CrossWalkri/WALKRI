@@ -1,6 +1,6 @@
 # WALKRI: Working Architecture for Legible, Knowable, Reliable Instrumentation
 
-Version 0.1.9 | 2026-07-20 | CC0
+Version 0.1.10 | 2026-08-20 | CC0
 
 **Two standards. One problem.**
 
@@ -176,7 +176,8 @@ Formal compatibility statements are in the `statements/` directory. See the CROS
 
 ## Documents
 
-- `WALKRI-standard-0_1_0.md` - Main specification (current: v0.1.7)
+- `WALKRI-standard-0_1_0.md` - Main specification (current: v0.2.1)
+- `machine-readable/` - Generated machine-readable layer: JSON Schema, Zod, JSON-LD, SHACL, OWL, GraphQL, and a per-requirement conformance verdict, all generated from one LinkML source so they cannot drift from the standard. See `machine-readable/README.md`.
 - `WALKRI-interface-specification-0_1_0.md` - Three-interface specification (upward, lateral, downstream)
 - `WALKRI-CROSS-boundary-0_1_0.md` - Formal boundary between WALKRI and CROSS
 - `WALKRI-guidance-0_1_0.md` - Practitioner guidance including gate declaration instrument guidance
@@ -243,5 +244,6 @@ Any grants ecosystem can adopt WALKRI without adopting CROSS, the Coordination S
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.10 | 2026-08-20 | Machine-readable layer added to the Documents list, with a pointer to `machine-readable/README.md`; the standard version pointer corrected from v0.1.7 to the current v0.2.1. No requirement or framework claim changed. |
 | 0.1.9 | 2026-07-20 | Evidence-path section added: places WALKRI in its domain-agnostic family (CRAFT holding the chain, ORE at the source boundary, WALKRI at the field), with the shared evidence-path figure and the through-line statement (no silent trust anywhere; the worth-judgment left visible in the hands, human or automated, that make it). Cross-links to the CRAFT and ORE repositories. No requirement changed. |
 | 0.1.8 | 2026-06-13 | Frame Language own-voice vocabulary pass. Recasts: the rhetorical claim "Round design and form field design are governance ... making governance decisions" recast to "allocate decision standing ... making decision-standing choices", preserving the argument in Frame 2; own-voice "compliance" recast to "conformance" (the conformance-threshold sentence "constitutes conformance"; "not as a separate conformance exercise"; "produces data quality conformance across all of the following frameworks"); "the accountability context that field design must satisfy" recast to "the obligation context". Kept as admissible: "transparency" where it names an SROI principle and the SROI principles sentence (citation use of the source framework's term); "Accountability framework" (Core Humanitarian Standard) and the layer descriptors "Compliance framework" (USAID PIRS) and "Standards governance" (ISEAL) as contextual description of those external tools' own category, flagged for author review. No mapping-table cell, framework claim, conformance threshold, or field changed; vocabulary only. |
