@@ -17,7 +17,7 @@ This document is retired. It described the relationship between CROSS and WALKRI
 Where the relationship is now specified:
 
 - The canonical statement of how CRAFT, CROSS, and WALKRI relate is the interaction-architecture document, `craft-csis-frame-language-walkri-interaction-architecture-0_1_0.md`. Read it for the cross-standard relationship.
-- WALKRI's own position, its selective inheritance of CRAFT's instrument-facing conditions, its from-below composition role, and the distinction between transclusion (WALKRI's internal unit) and composition (the CROSS-to-WALKRI relationship), is in the WALKRI standard, Part XI (`WALKRI-standard-0_1_0.md`).
+- WALKRI's own position, its conformance to CRAFT's instrument-facing conditions with its content descending from Precision-First, its from-below composition role, and the distinction between transclusion (WALKRI's internal unit) and composition (the CROSS-to-WALKRI relationship), is in the WALKRI standard, Part XI (`WALKRI-standard-0_1_0.md`).
 - CROSS's own position, its inheritance of CRAFT's chain-framing conditions and its use of WALKRI, is in CROSS Part I and the CROSS inheritance receipt.
 
 The section-by-section CROSS-to-WALKRI mapping this document once carried is not reproduced. Each standard now declares its own position, and a domain application reads WALKRI's Part II interfaces and Part III requirements directly for what each instrument it composes with must satisfy.
