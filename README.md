@@ -232,6 +232,10 @@ Source and full documentation: github.com/CrossWalkri/tools
 
 ---
 
+## Machine-readable layer
+
+This standard ships a machine-readable fetch surface (a JSON Schema, a typed register of its provisions, and conformant and non-conformant examples) for a consumer that ingests it as data rather than reading the prose. It lives as one source in [Polymathie-Studio/tools](https://github.com/Polymathie-Studio/tools): source under `machine-readable/craft/walkri/`, the generated schema under `schema/craft/walkri/`, indexed by the [CRAFT family manifest](https://raw.githubusercontent.com/Polymathie-Studio/tools/main/schema/craft/craft-manifest.json). This standard's schema: https://raw.githubusercontent.com/Polymathie-Studio/tools/main/schema/craft/walkri/walkri.schema.json
+
 ## License
 
 CC0: dedicated to the public domain under Creative Commons Zero v1.0 Universal. See `LICENSE` for the full dedication.
